@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="C:\Users\Admin\wpilib\java\current\lib\WPILib.jar;C:\Users\Admin\wpilib\java\current\lib\NetworkTables.jar" destdir="doc" doctitle="command-based-javadoc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="org.usfirst.frc.team4536.robot.commands,org.usfirst.frc.team4536.robot,org.usfirst.frc.team4536.robot.subsystems" source="1.8" sourcepath="src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>
