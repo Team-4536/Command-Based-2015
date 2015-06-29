@@ -6,19 +6,18 @@ public class Utilities {
 	/**
 	 * @ author Liam and Stepan
 	 * @param input value to be limited.
-	 * @param lowerBound minimum value input will be no greater than. And Baller Gs
+	 * @param lowerBound minimum value input will be no greater than.
 	 * @param upperBound maximum value input will be no less than.
 	 * @return value after being constrained by upper and lower bounds.
 	 */
 	public static double limit(double input , double lowerBound, double upperBound) {
 		
-		if (input < lowerBound)
-			input = lowerBound;
-		
+		if (input < lowerBound) 
+			return lowerBound;
 		else if (input > upperBound)
-			input = upperBound;
-		
-		return input;
+			return upperBound;
+		else 
+			return input;
 	}
 	
 	/**
