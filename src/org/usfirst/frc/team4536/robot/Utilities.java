@@ -42,17 +42,25 @@ public class Utilities {
 	}
 	
 	/**
-	 * 
-	 * @param input input value to be raised to a power. Sign (+, -) will be maintained.
-	 * @param curve exponent value the input will be raised to.
-	 * @return input value raised to the curve with its sign (+, -) maintained.
+	 * @author Stepan
+	 * @param input value to be raised to a power (or curved)
+	 * @param curve exponent that the method uses to curve the input
+	 * @return input value raised an exponent (curved)
 	 */
 	public static double speedCurve(double input, double curve) {
+		//negative curves cause asymptotes, leading to overflow errors
+		//curves smaller than 0.1 have outputs of 1 for very small inputs
+		double adjustedCurve = limit(curve, 0.1, Double.MAX_VALUE);
 		
-		if (input < 0)
-			return -1 * Math.abs(Math.pow(input, limit(Math.abs(curve), 0.1, Double.MAX_VALUE)));
+		/* if the input is negative, outputs will be undefined when the curve is fractional
+		 * if the input is negative, outputs will be positive when the curve is even
+		 * we pretend that the input is positive, apply the curve, then reflect if over the x axis
+		*/
+		if(input < 0) {
+			return -Math.pow(Math.abs(input), adjustedCurve);
+		}
 		
-		return limit(Math.pow(input, limit(Math.abs(curve), 0.1, Double.MAX_VALUE)));
+		return Math.pow(input, adjustedCurve);
 	}
 	
 }
