@@ -44,7 +44,7 @@ public class Utilities {
 	/**
 	 * @author Stepan
 	 * @param input value to be raised to a power (or curved)
-	 * @param curve exponent that the method uses to curve the input
+	 * @param curve exponent that the method uses to curve the input (curves smaller than 0.1 are invalid)
 	 * @return input value raised an exponent (curved)
 	 */
 	public static double speedCurve(double input, double curve) {
