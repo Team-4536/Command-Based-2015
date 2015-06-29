@@ -48,14 +48,10 @@ public class Utilities {
 	 * @return input value raised an exponent (curved)
 	 */
 	public static double speedCurve(double input, double curve) {
-		//negative curves cause asymptotes, leading to overflow errors
-		//curves smaller than 0.1 have outputs of 1 for very small inputs
+		//negative curves cause asymptotes, leading to overflow errors. Curves smaller than 0.1 aren't very useful.
 		double adjustedCurve = limit(curve, 0.1, Double.MAX_VALUE);
 		
-		/* if the input is negative, outputs will be undefined when the curve is fractional
-		 * if the input is negative, outputs will be positive when the curve is even
-		 * we pretend that the input is positive, apply the curve, then reflect if over the x axis
-		*/
+		//if the input is negative, outputs can be undefined and positive for certain curves
 		if(input < 0) {
 			return -Math.pow(Math.abs(input), adjustedCurve);
 		}
