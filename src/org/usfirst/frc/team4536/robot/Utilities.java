@@ -10,7 +10,7 @@ public class Utilities {
 	 * @param upperBound maximum value input will be no less than.
 	 * @return value after being constrained by upper and lower bounds.
 	 */
-	public static double limit(double input , double lowerBound, double upperBound) {
+	public static double limit(double input, double lowerBound, double upperBound) {
 		
 		if (input < lowerBound) 
 			return lowerBound;
@@ -57,6 +57,20 @@ public class Utilities {
 		}
 		
 		return Math.pow(input, adjustedCurve);
+	}
+	
+	/**
+	 * @author Máiréad
+	 * @param input value that needs to be of a certain magnitude
+	 * @param deadZone magnitude the input should be greater than
+	 * @return input if greater than magnitude, 0 if not
+	 */
+	public static double deadZone(double input, double deadZone){
+	
+		if((input > -deadZone) && (input < deadZone)) 
+			return 0;
+		else
+			return input;
 	}
 	
 }
