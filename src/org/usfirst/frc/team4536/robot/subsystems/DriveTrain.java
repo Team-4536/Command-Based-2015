@@ -51,5 +51,8 @@ public class DriveTrain extends Subsystem {
     	
     	double leftTalonThrottle = forwardThrottle + turnThrottle;
     	double rightTalonThrottle = -forwardThrottle + turnThrottle;
+    	
+    	leftTalon.set(leftTalonThrottle);
+    	rightTalon.set(rightTalonThrottle);
     }
 }
