@@ -59,4 +59,5 @@ public class Utilities {
 		return Math.pow(input, adjustedCurve);
 	}
 	
+	
 }
