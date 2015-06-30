@@ -14,15 +14,24 @@ public class DriveTrain extends Subsystem {
 	Talon leftTalon;
 	Talon rightTalon;
 	
+	/**
+	 * @author Liam
+	 * @param leftTalonChannel - The PWM channel of the left talon of the drive train
+	 * @param rightTalonChannel - THe PWM channel of the right talon of the drive train
+	 */
+	public DriveTrain(int leftTalonChannel, int rightTalonChannel) {
+		
+		leftTalon = new Talon(leftTalonChannel);
+		rightTalon = new Talon(rightTalonChannel);
+	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	leftTalon = new Talon(RobotMap.LEFT_MOTOR);
-    	rightTalon = new Talon(RobotMap.RIGHT_MOTOR);
     }
     
-    /*
+    /**
      * @ author: Liam and Stepan
      * @ param leftThrottle - The throttle input into the left motor
      * @ param rightTHrottle - The throttle input into the right motor
@@ -33,6 +42,11 @@ public class DriveTrain extends Subsystem {
     	rightTalon.set(-rightThrottle);
     }
     
+    /**
+     * @author Liam and Stepan
+     * @param forwardThrottle - Throttle for forward motion of the drivetrain 
+     * @param turnThrottle - Throttle for horizontal motion of the drivetrain
+     */
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
     	
     	double leftTalonThrottle = forwardThrottle + turnThrottle;
