@@ -12,4 +12,8 @@ public class RobotMap {
     public static final int RIGHT_MOTOR = 2;
     public static final int ELEVATOR_MOTOR = 3;
     
+    public static final int ELEVATOR_ENCODER_A_CHANNEL = 1;
+    public static final int ELEVATOR_ENCODER_B_CHANNEL = 2;
+    
+    
 }

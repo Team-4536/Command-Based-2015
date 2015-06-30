@@ -12,13 +12,14 @@ public class Elevator extends Subsystem {
     // here. Call these from Commands.
 	
 	Talon elevatorTalon;
-	Gyro 
+	Encoder elevatorEncoder; 
 
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
+        // Set the default command for a subsystem here
         //setDefaultCommand(new MySpecialCommand());
     
     	elevatorTalon = new Talon(RobotMap.ELEVATOR_MOTOR);
+    	elevatorEncoder =new Encoder(RobotMap.ELEVATOR_ENCODER_A_CHANNEL,RobotMap.ELEVATOR_ENCODER_B_CHANNEL);
     }
 }
 
