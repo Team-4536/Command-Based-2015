@@ -10,6 +10,16 @@ import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
+	private Joystick mainStick;
+	private Joystick secondaryStick;
+	
+	public OI() {
+		
+		mainStick = new Joystick(RobotMap.MAIN_STICK);
+		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
+	}
+	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
