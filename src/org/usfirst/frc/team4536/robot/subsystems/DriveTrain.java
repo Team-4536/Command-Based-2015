@@ -44,8 +44,8 @@ public class DriveTrain extends Subsystem {
     
     /**
      * @author Liam and Stepan
-     * @param forwardThrottle - Throttle for forward motion of the drivetrain 
-     * @param turnThrottle - Throttle for horizontal motion of the drivetrain
+     * @param forwardThrottle - Throttle for forward motion of the drivetrain (+ forward, - backwards) 
+     * @param turnThrottle - Throttle for horizontal motion of the drivetrain (+ right, - left)
      */
     public void arcadeDrive(double forwardThrottle, double turnThrottle) {
     	
