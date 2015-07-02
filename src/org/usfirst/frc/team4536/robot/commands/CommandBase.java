@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 
 /**
+ * 
  *
  */
 public abstract class CommandBase extends Command {
@@ -18,8 +19,7 @@ public abstract class CommandBase extends Command {
 
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
+        // eg. requires(chassis);       	
     }
 
     // Called just before this Command runs the first time
