@@ -7,6 +7,9 @@ import org.usfirst.frc.team4536.robot.Robot;
 
 public class Drive extends CommandBase {
 	
+	/**
+	 * @author Noah
+	 */
 	public Drive() {
 		requires(driveTrain);
 	}
@@ -14,6 +17,9 @@ public class Drive extends CommandBase {
 	protected void initialize() {
     }
 	
+	/**
+	 * @author Noah
+	 */
     protected void execute() {
     	driveTrain.arcadeDrive(-Robot.oi.getMainStickY(), Robot.oi.getMainStickX());
     }
@@ -24,7 +30,10 @@ public class Drive extends CommandBase {
     
     protected void end() {
     }
-
+    
+    /**
+	 * @author Noah
+	 */
     protected void interrupted() {
     	driveTrain.arcadeDrive(0, 0);
     }
