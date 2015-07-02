@@ -2,20 +2,20 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
 
-public class Drive extends Command {
+public class Drive extends CommandBase {
 	
 	public Drive() {
-		requires(Robot.driveTrain);
-		requires(Robot.oi);
+		requires(driveTrain);
 	}
 	
 	protected void initialize() {
     }
 	
     protected void execute() {
-    	Robot.driveTrain.arcadeDrive(OI., );
+    	driveTrain.arcadeDrive(-Robot.oi.getMainStickY(), Robot.oi.getMainStickX());
     }
     
     protected boolean isFinished() {
@@ -26,6 +26,7 @@ public class Drive extends Command {
     }
 
     protected void interrupted() {
+    	driveTrain.arcadeDrive(0, 0);
     }
 
 }

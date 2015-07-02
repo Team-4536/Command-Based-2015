@@ -61,7 +61,7 @@ public class Utilities {
 	
 
 	/**
-	 * @author Máiréad
+	 * @author Mairead
 	 * @param input value that needs to be of a certain magnitude
 	 * @param deadZone magnitude the input should be greater than
 	 * @return input if greater than magnitude, 0 if not

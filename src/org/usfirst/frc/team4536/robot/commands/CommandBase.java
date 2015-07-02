@@ -13,13 +13,12 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  *
  */
 public class CommandBase extends Command {
-
+	
+	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
+	
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	
-    	DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
-    	
     }
 
     // Called just before this Command runs the first time
