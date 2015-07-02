@@ -36,6 +36,7 @@ public class Piston {
 	
 	/**
 	 * @author Stepan
+	 * Sets the state of piston as the opposite of its current state
 	 */
 	public void flip() {
 		leftSolenoid.set(!leftSolenoid.get());
