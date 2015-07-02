@@ -1,15 +1,16 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
  *
  */
-public class JoystickArcadeDrive extends Command {
+public class JoystickArcadeDrive extends CommandBase {
 
     public JoystickArcadeDrive() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(driveTrain);
     }
 
     // Called just before this Command runs the first time
