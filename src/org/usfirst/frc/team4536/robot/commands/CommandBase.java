@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public abstract class CommandBase extends Command {
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
+	public static Comp compSubsystem = new Comp();
 
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
