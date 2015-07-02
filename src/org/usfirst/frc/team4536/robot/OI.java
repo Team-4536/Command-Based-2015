@@ -11,30 +11,14 @@ import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
  */
 public class OI {
 	
-	private Joystick mainStick;
-	private Joystick secondaryStick;
+	public static Joystick mainStick;
+	public static Joystick secondaryStick;
 	
 	public OI() {
 		
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
 		
-	}
-	
-	public double getMainStickY(){
-		return mainStick.getY();
-	}
-	
-	public double getMainStickX(){
-		return mainStick.getX();
-	}
-	
-	public double getSecondaryStickY() {
-		return secondaryStick.getY();
-	}
-	
-	public double getSecondaryStickX() {
-		return secondaryStick.getX();
 	}
 	
     //// CREATING BUTTONS

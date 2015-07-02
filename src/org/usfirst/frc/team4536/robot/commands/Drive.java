@@ -15,7 +15,7 @@ public class Drive extends CommandBase {
     }
 	
     protected void execute() {
-    	driveTrain.arcadeDrive(-Robot.oi.getMainStickY(), Robot.oi.getMainStickX());
+    	driveTrain.arcadeDrive(-OI.mainStick.getY(), OI.mainStick.getX());
     }
     
     protected boolean isFinished() {
