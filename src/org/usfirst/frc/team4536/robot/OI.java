@@ -18,6 +18,11 @@ public class OI {
 		
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
+		
+	}
+	
+	public double getMainStick(){
+		
 	}
 	
     //// CREATING BUTTONS
