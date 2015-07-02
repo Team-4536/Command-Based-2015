@@ -29,6 +29,13 @@ public class OI {
 		return mainStick.getX();
 	}
 	
+	public double getSecondaryStickY() {
+		return secondaryStick.getY();
+	}
+	
+	public double getSecondaryStickX() {
+		return secondaryStick.getX();
+	}
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
