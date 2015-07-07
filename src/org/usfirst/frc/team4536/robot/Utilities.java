@@ -73,6 +73,5 @@ public class Utilities {
 		else
 			return input;
 	}
-
 	
 }

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.subsystems.*;
@@ -17,6 +17,7 @@ public abstract class CommandBase extends Command {
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
 	public static Comp compSubsystem = new Comp();
+	public static SmartDashboard smartDashboard= new SmartDashboard();
 
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
