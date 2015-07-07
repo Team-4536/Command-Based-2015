@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4536.robot.commands.Drive;
-import org.usfirst.frc.team4536.robot.commands.RunCompressor;
+//import org.usfirst.frc.team4536.robot.commands.RunCompressor;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 
@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         driveCommand = new Drive();
-        compressorCommand = new RunCompressor();
+        //compressorCommand = new RunCompressor();
     }
 	
 	public void disabledPeriodic() {
