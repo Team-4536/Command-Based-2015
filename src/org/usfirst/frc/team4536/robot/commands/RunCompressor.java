@@ -8,8 +8,11 @@ public class RunCompressor extends CommandBase {
 	
 	public RunCompressor() {
 		requires(compSub);
-		compSub.startComp();
 	}
+	
+	protected void initialize() {
+		compSub.startComp();
+    }
 	
 	protected void execute() {
 

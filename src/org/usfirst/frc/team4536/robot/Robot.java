@@ -68,6 +68,8 @@ public class Robot extends IterativeRobot {
         	autonomousCommand.cancel();    
         if (driveCommand != null) 
         	driveCommand.start();
+        if (compressorCommand != null)
+        	compressorCommand.start();
     }
 
     /**
