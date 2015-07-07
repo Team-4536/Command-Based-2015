@@ -28,14 +28,18 @@ public class Drive extends CommandBase {
         return false;
     }
     
+    /**
+	 * @author Stepan
+	 */
     protected void end() {
+    	driveTrain.arcadeDrive(0, 0);
     }
     
     /**
-	 * @author Noah
+	 * @author Noah and Stepan
 	 */
     protected void interrupted() {
-    	driveTrain.arcadeDrive(0, 0);
+    	end();
     }
 
 }

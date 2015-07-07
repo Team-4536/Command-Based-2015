@@ -5,24 +5,23 @@ import org.usfirst.frc.team4536.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Compressor;
 
-public class Comp extends Subsystem{
+public class CompressorSubsystem extends Subsystem{
 	
-	Compressor comp;
+	Compressor compressor;
 	
-	public Comp() {
-		comp = new Compressor();
+	public CompressorSubsystem() {
+		compressor = new Compressor();
 	}
 	
 	public void initDefaultCommand() {
 		
 	}
 	
-	public void StartComp() {
-		comp.start();
+	public void startComp() {
+		compressor.start();
 	}
 	
-	public void StopComp() {
-		comp.stop();
+	public void stopComp() {
+		compressor.stop();
 	}
-	
 }
