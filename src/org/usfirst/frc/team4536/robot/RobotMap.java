@@ -9,11 +9,15 @@ public class RobotMap {
 	
 	/*-------------------------------------Motors------------------------------------*/	
     public static final int LEFT_MOTOR = 1;
-    public static final int RIGHT_MOTOR = 2;
-    public static final int ELEVATOR_MOTOR = 3;
+    public static final int RIGHT_MOTOR = 0;
+    public static final int ELEVATOR_MOTOR = 2;
     
-    public static final int ELEVATOR_ENCODER_A_CHANNEL = 1;
-    public static final int ELEVATOR_ENCODER_B_CHANNEL = 2;
+    public static final int ELEVATOR_ENCODER_A_CHANNEL = 5;
+    public static final int ELEVATOR_ENCODER_B_CHANNEL = 6;
     
+    public static final int TOP_LIMIT_SWITCH =3;
+    public static final int MIDDLE_LIMIT_SWITCH =1;
+    public static final int BOTTOM_LIMIT_SWITCH =4;
     
+    public static final int SECONDARY_STICK = 1; 
 }

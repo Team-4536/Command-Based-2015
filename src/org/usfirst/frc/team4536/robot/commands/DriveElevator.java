@@ -1,32 +1,19 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4536.robot.commands.CommandBase;
 
 import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.RobotMap;
-import org.usfirst.frc.team4536.robot.subsystems.*;
-
-import edu.wpi.first.wpilibj.command.Scheduler;
-
+import org.usfirst.frc.team4536.robot.Robot;
 
 /**
  *
  */
-public class CommandBase extends Command {
-	
-	
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
-	public static Elevator elevator = new Elevator(RobotMap.ELEVATOR_MOTOR,
-													RobotMap.ELEVATOR_ENCODER_A_CHANNEL,
-													RobotMap.ELEVATOR_ENCODER_B_CHANNEL,
-													RobotMap.TOP_LIMIT_SWITCH,
-													RobotMap.MIDDLE_LIMIT_SWITCH,
-													RobotMap.BOTTOM_LIMIT_SWITCH);
+public class DriveElevator extends CommandBase {
 
-    public CommandBase() {
+    public DriveElevator() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
+    	requires(elevator);
     }
 
     // Called just before this Command runs the first time
@@ -35,6 +22,20 @@ public class CommandBase extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if ((elevator.topLimitSwitchValue() == true) && (OI.secondaryStick.getY() > 0)){
+    		elevator.drive(0);
+    	}
+    	else if (((elevator.bottomLimitSwitchValue() == true) 
+    			|| (elevator.middleLimitSwitchValue() == true)) 
+    			&& (OI.secondaryStick.getY() < 0)){
+    		elevator.drive(0);
+    	}
+    	
+    	else
+    		elevator.drive(-OI.secondaryStick.getY());
+    	
+    	System.out.println(elevator.topLimitSwitchValue());
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

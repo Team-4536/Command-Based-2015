@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4536.robot.commands.DriveElevator;
+import org.usfirst.frc.team4536.robot.subsystems.Elevator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,6 +23,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
+    Command DriveElevatorCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -30,6 +33,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        DriveElevatorCommand = new DriveElevator();
     }
 	
 	public void disabledPeriodic() {
@@ -69,6 +73,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        if (DriveElevatorCommand != null) DriveElevatorCommand.start();
     }
     
     /**
