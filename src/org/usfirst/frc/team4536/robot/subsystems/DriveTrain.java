@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Talon;
@@ -32,7 +31,7 @@ public class DriveTrain extends Subsystem {
     }
     
     /**
-     * @ author: Liam and Stepan
+     * @ author Liam and Stepan
      * @ param leftThrottle - The throttle input into the left motor
      * @ param rightTHrottle - The throttle input into the right motor
      */

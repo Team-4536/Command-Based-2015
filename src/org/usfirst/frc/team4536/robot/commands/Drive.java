@@ -22,6 +22,7 @@ public class Drive extends CommandBase {
 	 */
     protected void execute() {
     	driveTrain.arcadeDrive(-OI.mainStick.getY(), OI.mainStick.getX());
+    	smartDashboard.putNumber("Caleb is Wrong", OI.mainStick.getY());
     }
     
     protected boolean isFinished() {
