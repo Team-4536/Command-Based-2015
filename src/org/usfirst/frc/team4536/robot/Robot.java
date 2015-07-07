@@ -11,6 +11,7 @@ import org.usfirst.frc.team4536.robot.commands.Drive;
 //import org.usfirst.frc.team4536.robot.commands.RunCompressor;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4536.robot.commands.TankDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,7 +27,8 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command driveCommand;
-    Command compressorCommand;
+    //Command compressorCommand;
+    Command tankDriveCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -38,6 +40,8 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new ExampleCommand();
         driveCommand = new Drive();
         //compressorCommand = new RunCompressor();
+        tankDriveCommand = new TankDrive();
+
     }
 	
 	public void disabledPeriodic() {
@@ -54,7 +58,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        compressorCommand.start();
+        //compressorCommand.start();
     }
 
     public void teleopInit() {
@@ -72,7 +76,7 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
     	driveCommand.cancel();
-    	compressorCommand.cancel();
+    	//compressorCommand.cancel();
     }
 
     /**
@@ -80,8 +84,9 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        
         if (driveCommand != null) driveCommand.start();
-        compressorCommand.start();
+        //compressorCommand.start();
     }
     
     /**
