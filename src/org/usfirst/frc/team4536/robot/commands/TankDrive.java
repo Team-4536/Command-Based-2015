@@ -7,7 +7,8 @@ import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
 
 /**
- *
+ * @author Liam
+ * TankDrive drives by running each motor with a separate input. 
  */
 public class TankDrive extends CommandBase {
 
