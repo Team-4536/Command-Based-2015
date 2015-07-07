@@ -88,12 +88,10 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         
-        if (driveCommand != null) 
+        if (driveCommand != null)
         	driveCommand.start();
-
-        if (DriveElevatorCommand != null) DriveElevatorCommand.start();
     }
-    
+
     /**
      * This function is called periodically during test mode
      */

@@ -23,7 +23,7 @@ public class Drive extends CommandBase {
 	 * @author Noah
 	 */
     protected void execute() {
-    	driveTrain.arcadeDrive(Utilities.speedCurve(-OI.mainStick.getY(), Constants.SPEED_CURVE), Utilities.speedCurve(OI.mainStick.getX(), Constants.SPEED_CURVE));
+    	driveTrain.arcadeDrive(Utilities.speedCurve(Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE), Utilities.speedCurve(Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE), Constants.SPEED_CURVE));
     	smartDashboard.putNumber("Caleb is Wrong", OI.mainStick.getY());
     }
     
