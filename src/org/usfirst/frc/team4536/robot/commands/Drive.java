@@ -2,8 +2,10 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
+import org.usfirst.frc.team4536.robot.Utilities;
 
 public class Drive extends CommandBase {
 	
@@ -21,7 +23,7 @@ public class Drive extends CommandBase {
 	 * @author Noah
 	 */
     protected void execute() {
-    	driveTrain.arcadeDrive(-OI.mainStick.getY(), OI.mainStick.getX());
+    	driveTrain.arcadeDrive(Utilities.speedCurve(-OI.mainStick.getY(), Constants.SPEED_CURVE), Utilities.speedCurve(OI.mainStick.getX(), Constants.SPEED_CURVE));
     	smartDashboard.putNumber("Caleb is Wrong", OI.mainStick.getY());
     }
     
