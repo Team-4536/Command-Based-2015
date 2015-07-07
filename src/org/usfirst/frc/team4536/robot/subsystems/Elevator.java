@@ -27,6 +27,7 @@ public class Elevator extends Subsystem {
 	{
 		elevatorTalon = new Talon(talonChannel);
     	elevatorEncoder = new Encoder(encoderAChannel, encoderBChannel);
+    	//For our particular Robot "Zenith" in the 2014-2015 competition The A Channel has only the signal wire
     	topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
     	middleLimitSwitch = new DigitalInput(middleLimitSwitchChannel);
     	bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
@@ -55,7 +56,11 @@ public class Elevator extends Subsystem {
 	public boolean bottomLimitSwitchValue(){
 		return !bottomLimitSwitch.get();
 	}
-	
+	  
+	/**
+     * @ author: Mairead
+     * @ param verticalThrottle - The throttle input into the elevator motor
+     */
 	public void drive(double verticalThrottle){
 		elevatorTalon.set(verticalThrottle);
 	}
