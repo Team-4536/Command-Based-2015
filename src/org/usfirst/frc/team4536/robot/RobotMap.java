@@ -10,6 +10,8 @@ public class RobotMap {
 	/*-------------------------------------Motor Channels------------------------------------*/	
     public static final int LEFT_MOTOR = 1;
     public static final int RIGHT_MOTOR = 0;
+
+    public static final int ELEVATOR_MOTOR = 2;
     
     /*-------------------------------------Joystick Ports---------------------------------*/
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)
@@ -17,4 +19,15 @@ public class RobotMap {
     
     
     /*-------------------------------------Buttons-----------------------------------*/
+    
+    /*-------------------------------------Encoder Channels-----------------------------------*/
+    public static final int ELEVATOR_ENCODER_A_CHANNEL = 5;
+    public static final int ELEVATOR_ENCODER_B_CHANNEL = 6;
+    
+    /*-------------------------------------Limit Switches-----------------------------------*/
+    public static final int TOP_LIMIT_SWITCH =3;
+    public static final int MIDDLE_LIMIT_SWITCH =1;
+    public static final int BOTTOM_LIMIT_SWITCH =4;
+
+
 }

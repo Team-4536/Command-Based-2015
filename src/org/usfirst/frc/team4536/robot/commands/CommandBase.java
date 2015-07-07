@@ -13,15 +13,22 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * 
  *
  */
+
 public abstract class CommandBase extends Command {
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
 	public static Comp compSubsystem = new Comp();
 	public static SmartDashboard smartDashboard= new SmartDashboard();
+	public static Elevator elevator = new Elevator(RobotMap.ELEVATOR_MOTOR,
+			RobotMap.ELEVATOR_ENCODER_A_CHANNEL,
+			RobotMap.ELEVATOR_ENCODER_B_CHANNEL,
+			RobotMap.TOP_LIMIT_SWITCH,
+			RobotMap.MIDDLE_LIMIT_SWITCH,
+			RobotMap.BOTTOM_LIMIT_SWITCH);
 
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);       	
+    	//eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

@@ -12,6 +12,8 @@ import org.usfirst.frc.team4536.robot.commands.Drive;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4536.robot.commands.TankDrive;
+import org.usfirst.frc.team4536.robot.commands.DriveElevator;
+import org.usfirst.frc.team4536.robot.subsystems.Elevator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,6 +31,7 @@ public class Robot extends IterativeRobot {
     Command driveCommand;
     //Command compressorCommand;
     Command tankDriveCommand;
+    Command DriveElevatorCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -41,7 +44,7 @@ public class Robot extends IterativeRobot {
         driveCommand = new Drive();
         //compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
-
+        DriveElevatorCommand = new DriveElevator();
     }
 	
 	public void disabledPeriodic() {
@@ -86,7 +89,8 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         
         if (driveCommand != null) driveCommand.start();
-        //compressorCommand.start();
+
+        if (DriveElevatorCommand != null) DriveElevatorCommand.start();
     }
     
     /**
