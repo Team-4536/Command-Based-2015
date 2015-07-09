@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team4536.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -8,7 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4536.robot.commands.Drive;
-//import org.usfirst.frc.team4536.robot.commands.RunCompressor;
+import org.usfirst.frc.team4536.robot.commands.RunCompressor;
 import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4536.robot.commands.TankDrive;
@@ -29,7 +28,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand;
     Command driveCommand;
-    //Command compressorCommand;
+    Command compressorCommand;
     Command tankDriveCommand;
     Command DriveElevatorCommand;
 
@@ -42,7 +41,7 @@ public class Robot extends IterativeRobot {
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
         driveCommand = new Drive();
-        //compressorCommand = new RunCompressor();
+        compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
         DriveElevatorCommand = new DriveElevator();
     }
@@ -53,24 +52,27 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        if(autonomousCommand != null) 
+        	autonomousCommand.start();
+        if(compressorCommand != null)
+            compressorCommand.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        //compressorCommand.start();
     }
 
     public void teleopInit() {
-		// This makes sure that the autonomous stops running when
+    	// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        
+        if (autonomousCommand != null) 
+        	autonomousCommand.cancel();    
+        if (driveCommand != null) 
+        	driveCommand.start();
+        if (compressorCommand != null)
+        	compressorCommand.start();
     }
 
     /**
@@ -78,8 +80,10 @@ public class Robot extends IterativeRobot {
      * You can use it to reset subsystems before shutting down.
      */
     public void disabledInit(){
-    	driveCommand.cancel();
-    	//compressorCommand.cancel();
+    	if (driveCommand != null) 
+        	driveCommand.cancel();
+        if (compressorCommand != null) 
+        	compressorCommand.cancel();
     }
 
     /**

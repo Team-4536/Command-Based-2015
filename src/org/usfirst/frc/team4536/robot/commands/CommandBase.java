@@ -1,3 +1,4 @@
+
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -15,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public abstract class CommandBase extends Command {
 	
 	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
-	public static Comp compSubsystem = new Comp();
+	public static CompressorSubsystem compSub = new CompressorSubsystem();
 	public static SmartDashboard smartDashboard= new SmartDashboard();
 	public static Elevator elevator = new Elevator(RobotMap.ELEVATOR_MOTOR,
 			RobotMap.ELEVATOR_ENCODER_A_CHANNEL,
