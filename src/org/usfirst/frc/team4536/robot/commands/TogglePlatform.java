@@ -15,7 +15,7 @@ public class TogglePlatform extends CommandBase {
 	}
 
 	protected void initialize() {
-		
+		platform.flip();
     }
 	
 	protected void execute() {
@@ -31,6 +31,6 @@ public class TogglePlatform extends CommandBase {
     }
     
     protected void interrupted() {
-    	
+    	end();
     }
 }
