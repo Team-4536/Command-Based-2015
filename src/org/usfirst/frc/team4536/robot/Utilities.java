@@ -4,9 +4,21 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
 	
-	private static double currentTime = 0.0;
-	private static double prevTime = 0.0;
+	
+	/*-----------------------------------------------------variables--------------------------------------------*/
+	
+	/*********
+	Cycle Time
+	**********/
+	private static double currentTime, prevTime = 0.0;
 	public static double cycleTime = 0.0;
+	
+	/*****************
+	Acceleration Limit
+	******************/
+	public static double finalThrottle = 0.0;
+	
+	/*------------------------------------------------------methods---------------------------------------------*/
 	
 	public static Timer timer = new Timer();
 	
@@ -127,5 +139,11 @@ public class Utilities {
 		prevTime = currentTime;
 		
 		return cycleTime;
+	}
+	
+	public static double accelLimit(double throttle, Object driveTrain) {
+		
+		
+		return finalThrottle;
 	}
 }

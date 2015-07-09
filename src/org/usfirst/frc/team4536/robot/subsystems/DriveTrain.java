@@ -22,14 +22,15 @@ public class DriveTrain extends Subsystem {
 		
 		leftTalon = new Talon(leftTalonChannel);
 		rightTalon = new Talon(rightTalonChannel);
+		
+    	leftTalon.set(0.0);
+    	rightTalon.set(0.0);
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand())
     	
-    	leftTalon.set(0.0);
-    	rightTalon.set(0.0);
     }
     
     /**
