@@ -2,10 +2,11 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4536.robot.commands.CommandBase;
 
+import org.usfirst.frc.team4536.robot.commands.CommandBase;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
+import org.usfirst.frc.team4536.robot.Utilities;
 
 /**
  *
@@ -23,27 +24,27 @@ public class DriveElevator extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+
     	
-    	//Makes sure that the elevator can only drive when not hitting a limit switch
-   	
-    	if ((elevator.topLimitSwitchValue() == true) && (OI.secondaryStick.getY() > 0)){
-    		//If the elevator hits the top limit switch it can go down but not up
-    		
-    		elevator.drive(0);
-    	}
-    	else if (((elevator.bottomLimitSwitchValue() == true) 
-    			|| (elevator.middleLimitSwitchValue() == true)) 
-    			&& (OI.secondaryStick.getY() < 0)){
-    		//If the elevator hits the middle or bottom limit switch it can go up but not down
-    		
-    		elevator.drive(0);
-    	}
-    	
-    	else
-    		elevator.drive(-OI.secondaryStick.getY());
+    	if (OI.secondaryStick.getRawButton(6) == true){
+    		elevator.drive(Utilities.deadZone(-OI.secondaryStick.getY(),0.05));
+    		elevator.setDesiredHeight(elevator.getCurrentHeight());
     		//The elevator drives dependent on the joystick, back to move up, forward to move down
+    	}
     	
-    	System.out.println(elevator.topLimitSwitchValue());
+    	else elevator.goToDesiredHeight();
+    	
+    	if (OI.secondaryStick.getRawButton(3) == true){
+    		elevator.setDesiredHeight(0);
+    	}
+    	
+    	elevator.update();
+    	
+    	
+    	System.out.println("encoder" + elevator.getEncoderHeight());
+    	System.out.println("desired" + elevator.getDesiredHeight());
+    	System.out.println("current" + elevator.getCurrentHeight());
+    	
     	
     }
 

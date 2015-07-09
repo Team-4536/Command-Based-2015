@@ -29,5 +29,7 @@ public class RobotMap {
     public static final int MIDDLE_LIMIT_SWITCH =1;
     public static final int BOTTOM_LIMIT_SWITCH =4;
 
-
+    /*-------------------------------------Proportionality Constants-----------------------------------*/    
+   	public static final double ELEVATOR_PROPORTIONALITY_CONSTANT = .5; //Units of throttle/inch
+   	public static final double TICKS_PER_INCHES = 247.7; //Converts encoder ticks to measurable inches
 }

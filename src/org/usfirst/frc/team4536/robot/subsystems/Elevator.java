@@ -3,7 +3,11 @@ package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Encoder;
+
+import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.RobotMap;
+import org.usfirst.frc.team4536.robot.Utilities;
+
 import edu.wpi.first.wpilibj.DigitalInput;;
 
 
@@ -18,6 +22,11 @@ public class Elevator extends Subsystem {
 	DigitalInput middleLimitSwitch;
 	DigitalInput bottomLimitSwitch;
 	
+	double actualHeight;
+	double setHeight;
+	double currentHeight;
+	
+	
 	public Elevator (int talonChannel, 
 			int encoderAChannel,
 			int encoderBChannel,
@@ -31,6 +40,7 @@ public class Elevator extends Subsystem {
     	topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
     	middleLimitSwitch = new DigitalInput(middleLimitSwitchChannel);
     	bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
+    	
 			}
     /**
      * @ author: Mairead
@@ -59,18 +69,56 @@ public class Elevator extends Subsystem {
 	  
 	/**
      * @ author: Mairead
-     * @ param verticalThrottle - The throttle input into the elevator motor
+     * @ param verticalThrottle - The throttle input into the elevator motor.
+     * 							  Values go from -1 to 1
+     * 							  Positive values make the elevator go up, negative makes the elevator go down 
      */
 	public void drive(double verticalThrottle){
-		elevatorTalon.set(verticalThrottle);
+		
+		//Makes sure that the elevator can only drive when not hitting a limit switch
+		
+    	if ((this.topLimitSwitchValue() == true) && (OI.secondaryStick.getY() > 0)){
+    		//If the elevator hits the top limit switch it can go down but not up
+    		
+    		this.drive(0);
+    	}
+    	else if (((this.bottomLimitSwitchValue() == true) 
+    			|| (this.middleLimitSwitchValue() == true)) 
+    			&& (OI.secondaryStick.getY() < 0)){
+    		//If the elevator hits the middle or bottom limit switch it can go up but not down
+    		
+    		this.drive(0);
+    	}
+    	
+    	else
+    		elevatorTalon.set(verticalThrottle);
+	}	
+	
+	public void goToDesiredHeight(){
+		this.drive(Utilities.limit(currentHeight-setHeight));			
 	}
 	
+	public void setDesiredHeight(double desiredHeight){
+		setHeight = desiredHeight;
+	}
+	public void update(){
+		currentHeight = (this.getEncoderHeight()/RobotMap.TICKS_PER_INCHES);
+	}
+	public double getEncoderHeight(){
+		return elevatorEncoder.getDistance();
+	}
+	
+	public double getDesiredHeight(){
+		return setHeight;
+	}
+	
+	public double getCurrentHeight(){
+		return currentHeight;
+	}
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here
-        //setDefaultCommand(new MySpecialCommand());
-    
-    	
+        //setDefaultCommand(new MySpecialCommand());	
     }
 }
 

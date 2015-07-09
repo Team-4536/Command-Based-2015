@@ -15,6 +15,7 @@ import org.usfirst.frc.team4536.robot.commands.TankDrive;
 import org.usfirst.frc.team4536.robot.commands.DriveElevator;
 import org.usfirst.frc.team4536.robot.subsystems.Elevator;
 
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
     //Command compressorCommand;
     Command tankDriveCommand;
     Command DriveElevatorCommand;
+    Command SetElevatorHeightCommand;
 
     /**
      * This function is run when the robot is first started up and should be
