@@ -23,7 +23,7 @@ public class TogglePlatform extends CommandBase {
     }
     
     protected boolean isFinished() {
-        return false;
+        return true;
     }
     
     protected void end() {

@@ -25,7 +25,6 @@ public class OI {
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		
 		platformToggleButton.whenPressed(new TogglePlatform());
-		
 	}
 	
     //// CREATING BUTTONS
