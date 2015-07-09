@@ -13,6 +13,10 @@ public class RobotMap {
 
     public static final int ELEVATOR_MOTOR = 2;
     
+    /*-------------------------------------Platform Solenoid Channels------------------------------------*/	
+    public static final int RIGHT_PLATFORM_SOLENOID_CHANNEL = 2;
+	public static final int LEFT_PLATFORM_SOLENOID_CHANNEL = 3;
+    
     /*-------------------------------------Joystick Ports---------------------------------*/
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)
     public static final int SECONDARY_STICK = 1; // (Also the right stick for tank drive)
