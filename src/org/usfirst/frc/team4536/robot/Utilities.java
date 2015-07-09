@@ -1,7 +1,14 @@
 package org.usfirst.frc.team4536.robot;
 import java.lang.Math;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
+	
+	private static double currentTime = 0.0;
+	private static double prevTime = 0.0;
+	public static double cycleTime = 0.0;
+	
+	public static Timer timer = new Timer();
 	
 	/**
 	 * @ author Liam and Stepan
@@ -58,7 +65,6 @@ public class Utilities {
 		
 		return Math.pow(input, adjustedCurve);
 	}
-	
 
 	/**
 	 * @author Mairead
@@ -74,4 +80,52 @@ public class Utilities {
 			return input;
 	}
 	
+	/**
+	 *@ author Liam
+	 * Starts the timer.
+	 */
+	public static void startTimer() {
+		
+		timer.start();
+	}
+	
+	/**
+	 * @author Liam
+	 * Resets the timer by making the start time the current time so all time values are then compared to that new more recent time.
+	 */
+	public static void resetTimer() {
+		
+		timer.reset();
+	}
+	
+	/**
+	 * @author Liam
+	 * Stops the timer.
+	 */
+	public static void stopTimer() {
+		
+		timer.stop();
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the current time of the timer in seconds
+	 */
+	public static double getTime() {
+		
+		return timer.get();
+	}
+	
+	/**
+	 * @author Liam
+	 * @return the cycle time of our code is returned 
+	 */
+	public static double getCycleTime() {
+		
+		currentTime = Utilities.getTime();
+		cycleTime = currentTime - prevTime;
+		prevTime = currentTime;
+		
+		return cycleTime;
+	}
 }
