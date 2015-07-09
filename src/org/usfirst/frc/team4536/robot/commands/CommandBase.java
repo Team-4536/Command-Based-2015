@@ -22,7 +22,7 @@ public abstract class CommandBase extends Command {
 			RobotMap.MIDDLE_LIMIT_SWITCH,
 			RobotMap.BOTTOM_LIMIT_SWITCH);
 	public static Platform platform = new Platform(RobotMap.LEFT_PLATFORM_SOLENOID_CHANNEL,
-												   RobotMap.RIGHT_PLATFORM_SOLENOID_CHANNEL)
+												   RobotMap.RIGHT_PLATFORM_SOLENOID_CHANNEL);
 
     public CommandBase() {
         // Use requires() here to declare subsystem dependencies

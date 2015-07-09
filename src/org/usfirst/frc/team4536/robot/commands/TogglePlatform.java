@@ -10,7 +10,7 @@ public class TogglePlatform extends CommandBase {
 	/**
 	 * @author Stepan
 	 */
-	public TogglePlatform {
+	public TogglePlatform() {
 		requires(platform);
 	}
 
