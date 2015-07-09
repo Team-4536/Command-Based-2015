@@ -8,7 +8,7 @@ import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
 
-import edu.wpi.first.wpilibj.DigitalInput;;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 
 public class Elevator extends Subsystem {
@@ -25,6 +25,7 @@ public class Elevator extends Subsystem {
 	double actualHeight;
 	double setHeight;
 	double currentHeight;
+	double correction;
 	
 	
 	public Elevator (int talonChannel, 
@@ -39,9 +40,9 @@ public class Elevator extends Subsystem {
     	//For our particular Robot "Zenith" in the 2014-2015 competition The A Channel has only the signal wire
     	topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
     	middleLimitSwitch = new DigitalInput(middleLimitSwitchChannel);
-    	bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);
-    	
-			}
+    	bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel);	
+	}
+	
     /**
      * @ author: Mairead
      * @ return: True if switch is pressed
@@ -77,14 +78,14 @@ public class Elevator extends Subsystem {
 		
 		//Makes sure that the elevator can only drive when not hitting a limit switch
 		
-    	if ((this.topLimitSwitchValue() == true) && (OI.secondaryStick.getY() > 0)){
+    	if ((this.topLimitSwitchValue() == true) && (verticalThrottle < 0)){
     		//If the elevator hits the top limit switch it can go down but not up
     		
     		this.drive(0);
     	}
     	else if (((this.bottomLimitSwitchValue() == true) 
     			|| (this.middleLimitSwitchValue() == true)) 
-    			&& (OI.secondaryStick.getY() < 0)){
+    			&& (verticalThrottle > 0)){
     		//If the elevator hits the middle or bottom limit switch it can go up but not down
     		
     		this.drive(0);
@@ -92,18 +93,25 @@ public class Elevator extends Subsystem {
     	
     	else
     		elevatorTalon.set(verticalThrottle);
-	}	
+	}
 	
-	public void goToDesiredHeight(){
-		this.drive(Utilities.limit(currentHeight-setHeight));			
+	public void setTalon(double throttle){
+		elevatorTalon.set(throttle);
 	}
 	
 	public void setDesiredHeight(double desiredHeight){
 		setHeight = desiredHeight;
 	}
+	
 	public void update(){
-		currentHeight = (this.getEncoderHeight()/RobotMap.TICKS_PER_INCHES);
+		currentHeight =  (this.getEncoderHeight()/RobotMap.TICKS_PER_INCHES);
+		
+		/*if (this.topLimitSwitchValue()){
+			correction = (60 - (this.getEncoderHeight()/RobotMap.TICKS_PER_INCHES));
+		}*/
+		
 	}
+	
 	public double getEncoderHeight(){
 		return elevatorEncoder.getDistance();
 	}

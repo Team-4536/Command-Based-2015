@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4536.robot.commands.DriveElevator;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -19,7 +20,14 @@ public class OI {
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
 		
+		Button secondaryStitckButton6 = new JoystickButton(secondaryStick, 6);
+		
+		secondaryStitckButton6.whenPressed(new DriveElevator());
+		
 	}
+	
+
+	
 	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
