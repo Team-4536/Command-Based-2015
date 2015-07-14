@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Talon;
@@ -23,16 +22,19 @@ public class DriveTrain extends Subsystem {
 		
 		leftTalon = new Talon(leftTalonChannel);
 		rightTalon = new Talon(rightTalonChannel);
+		
+    	leftTalon.set(0.0);
+    	rightTalon.set(0.0);
 	}
 	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        //setDefaultCommand(new MySpecialCommand())
     	
     }
     
     /**
-     * @ author: Liam and Stepan
+     * @ author Liam and Stepan
      * @ param leftThrottle - The throttle input into the left motor
      * @ param rightTHrottle - The throttle input into the right motor
      */

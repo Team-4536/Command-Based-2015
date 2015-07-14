@@ -1,8 +1,9 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Piston {
+public class Piston extends Subsystem{
 	
 	
 	Solenoid leftSolenoid;
@@ -16,6 +17,11 @@ public class Piston {
 	public Piston(int leftSolenoidChannel, int rightSolenoidChannel) {
 		leftSolenoid = new Solenoid(leftSolenoidChannel);
 		rightSolenoid = new Solenoid(rightSolenoidChannel);
+	}
+	
+	public void initDefaultCommand() {
+	    // Set the default command for a subsystem here.
+	    //setDefaultCommand(new MySpecialCommand());	    	
 	}
 	
 	/**
