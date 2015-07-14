@@ -17,7 +17,7 @@ public class DriveElevatorWithStick extends CommandBase {
 
     public DriveElevatorWithStick() {
         // Use requires() here to declare subsystem dependencies
-    	requires(elevator);
+     requires(elevator);
     }
 
     // Called just before this Command runs the first time
@@ -26,10 +26,10 @@ public class DriveElevatorWithStick extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	elevator.drive(-OI.secondaryStick.getY()); 	
-    	elevator.update();
-    	
+     
+     elevator.drive(OI.secondaryStick.getY());  
+     elevator.update();
+     
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -44,6 +44,6 @@ public class DriveElevatorWithStick extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	elevator.drive(0);
+     elevator.drive(0);
     }
 }
