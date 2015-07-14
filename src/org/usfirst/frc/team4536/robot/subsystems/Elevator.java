@@ -96,13 +96,25 @@ public class Elevator extends Subsystem {
 	}
 	
 	
+	public void setActualHeight(double actualHeight){
+		correction = actualHeight - elevatorEncoder.get()/RobotMap.TICKS_PER_INCHES;
+	}
+	
 	public void update(){
-		currentHeight =  (this.getEncoderHeight()/RobotMap.TICKS_PER_INCHES);
+		currentHeight = correction + elevatorEncoder.get()/RobotMap.TICKS_PER_INCHES;
+		System.out.println(currentHeight);
 		
-		/*if (this.topLimitSwitchValue()){
-			correction = (60 - (this.getEncoderHeight()/RobotMap.TICKS_PER_INCHES));
-		}*/
+		if (this.bottomLimitSwitchValue() == true) {
+			setActualHeight(-0.5);
+		}
 		
+		if (this.middleLimitSwitchValue()) {
+			setActualHeight(12);
+		}
+			
+		if (this.topLimitSwitchValue()) {
+			setActualHeight(48);
+		}
 	}
 	
 	public double getEncoderHeight(){

@@ -28,6 +28,7 @@ public class DriveElevatorWithStick extends CommandBase {
     protected void execute() {
     	
     	elevator.drive(-OI.secondaryStick.getY()); 	
+    	elevator.update();
     	
     }
 
