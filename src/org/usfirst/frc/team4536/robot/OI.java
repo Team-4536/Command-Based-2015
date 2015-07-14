@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4536.robot.commands.DriveElevator;
+import org.usfirst.frc.team4536.robot.commands.DriveElevatorWithStick;
+import org.usfirst.frc.team4536.robot.commands.DriveElevatorToHeight;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -20,10 +21,11 @@ public class OI {
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
 		
-		Button secondaryStitckButton6 = new JoystickButton(secondaryStick, 6);
+		Button secondaryStickButton6 = new JoystickButton(secondaryStick, 6);
+		Button secondaryStickButton3 = new JoystickButton(secondaryStick, 3);
 		
-		secondaryStitckButton6.whenPressed(new DriveElevator());
-		
+		secondaryStickButton6.whenPressed(new DriveElevatorWithStick());
+		secondaryStickButton3.whenPressed(new DriveElevatorToHeight(50));
 	}
 	
 

@@ -1,17 +1,23 @@
+
 package org.usfirst.frc.team4536.robot.commands;
 
-import org.usfirst.frc.team4536.robot.Utilities;
-
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4536.robot.commands.CommandBase;
+import org.usfirst.frc.team4536.robot.OI;
+import org.usfirst.frc.team4536.robot.Robot;
+import org.usfirst.frc.team4536.robot.Utilities;
 
 /**
  *
  */
-public class GoToDesiredHeight extends CommandBase {
 
-    public GoToDesiredHeight() {
+
+public class DriveElevatorWithStick extends CommandBase {
+
+    public DriveElevatorWithStick() {
         // Use requires() here to declare subsystem dependencies
-        requires(elevator);
+    	requires(elevator);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +27,7 @@ public class GoToDesiredHeight extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	elevator.drive(Utilities.limit(elevator.getCurrentHeight() - elevator.getDesiredHeight()));			
+    	elevator.drive(-OI.secondaryStick.getY()); 	
     	
     }
 

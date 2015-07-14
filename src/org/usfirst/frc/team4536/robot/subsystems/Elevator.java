@@ -95,13 +95,6 @@ public class Elevator extends Subsystem {
     		elevatorTalon.set(verticalThrottle);
 	}
 	
-	public void setTalon(double throttle){
-		elevatorTalon.set(throttle);
-	}
-	
-	public void setDesiredHeight(double desiredHeight){
-		setHeight = desiredHeight;
-	}
 	
 	public void update(){
 		currentHeight =  (this.getEncoderHeight()/RobotMap.TICKS_PER_INCHES);
@@ -114,10 +107,6 @@ public class Elevator extends Subsystem {
 	
 	public double getEncoderHeight(){
 		return elevatorEncoder.getDistance();
-	}
-	
-	public double getDesiredHeight(){
-		return setHeight;
 	}
 	
 	public double getCurrentHeight(){

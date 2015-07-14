@@ -1,33 +1,32 @@
-
 package org.usfirst.frc.team4536.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team4536.robot.commands.CommandBase;
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.Robot;
 import org.usfirst.frc.team4536.robot.Utilities;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
+public class DriveElevatorToHeight extends CommandBase {
+	
+	double desiredHeight;
 
-
-public class DriveElevator extends CommandBase {
-
-    public DriveElevator() {
+    public DriveElevatorToHeight(double Height) {
         // Use requires() here to declare subsystem dependencies
-    	requires(elevator);
+        requires(elevator);
+        desiredHeight = Height;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	elevator.drive(-OI.secondaryStick.getY()); 	
+    	elevator.update();
+    	elevator.drive(Utilities.limit(elevator.getCurrentHeight() - desiredHeight));		
     	
     }
 
