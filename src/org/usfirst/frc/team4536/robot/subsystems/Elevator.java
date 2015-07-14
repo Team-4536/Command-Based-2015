@@ -112,7 +112,7 @@ public class Elevator extends Subsystem {
   }
   
   if (this.bottomLimitSwitchValue() == true) {
-   setActualHeight(Constants.BOTTOM_LIMIT_SWITCH_HEIGT);
+   setActualHeight(Constants.BOTTOM_LIMIT_SWITCH_HEIGHT);
   }
    
 
