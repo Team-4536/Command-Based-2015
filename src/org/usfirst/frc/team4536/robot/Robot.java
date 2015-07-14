@@ -5,14 +5,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4536.robot.commands.Drive;
-import org.usfirst.frc.team4536.robot.commands.RunCompressor;
-import org.usfirst.frc.team4536.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4536.robot.commands.TankDrive;
-import org.usfirst.frc.team4536.robot.subsystems.Elevator;
-
+import org.usfirst.frc.team4536.robot.subsystems.*;
+import org.usfirst.frc.team4536.robot.commands.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -30,8 +24,7 @@ public class Robot extends IterativeRobot {
     Command driveCommand;
     Command compressorCommand;
     Command tankDriveCommand;
-    Command DriveElevatorCommand;
-    Command SetElevatorHeightCommand;
+    Command toggleCanbuglerCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -44,6 +37,8 @@ public class Robot extends IterativeRobot {
         driveCommand = new Drive();
         compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
+        toggleCanbuglerCommand = new ToggleCanburgler();
+        
     }
 	
 	public void disabledPeriodic() {
@@ -94,6 +89,7 @@ public class Robot extends IterativeRobot {
         
         if (driveCommand != null)
         	driveCommand.start();
+        
     }
 
     /**
