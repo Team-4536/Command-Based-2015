@@ -16,6 +16,10 @@ public class RobotMap {
     /*-------------------------------------Platform Solenoid Channels------------------------------------*/	
     public static final int RIGHT_PLATFORM_SOLENOID_CHANNEL = 2;
 	public static final int LEFT_PLATFORM_SOLENOID_CHANNEL = 3;
+	
+	/*-------------------------------------Canburgler Solenoid Channel--------------------*/
+	public static final int CANBURGLER_LEFT_SOLENOID_CHANNEL = 4;
+	public static final int CANBURGLER_RIGHT_SOLENOID_CHANNEL = 5;
     
     /*-------------------------------------Joystick Ports---------------------------------*/
     public static final int MAIN_STICK = 0; // (Also the left stick for tank drive)
