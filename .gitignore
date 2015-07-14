@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# WPILib 
-bin/ 
-=======
-# WPILib 
-bin/ 
->>>>>>> refs/heads/Elevator
+/*
+!src/
+!.gitignore
+!README.md
