@@ -1,11 +1,13 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Piston extends Subsystem{
 	
-	
+	Timer extendedTimer;
+	Timer retractedTimer;
 	Solenoid leftSolenoid;
 	Solenoid rightSolenoid;
 	
@@ -17,6 +19,9 @@ public class Piston extends Subsystem{
 	public Piston(int leftSolenoidChannel, int rightSolenoidChannel) {
 		leftSolenoid = new Solenoid(leftSolenoidChannel);
 		rightSolenoid = new Solenoid(rightSolenoidChannel);
+		
+		extendedTimer.start();
+		retractedTimer.start();
 	}
 	
 	public void initDefaultCommand() {
@@ -54,5 +59,33 @@ public class Piston extends Subsystem{
 	 */
 	public boolean isExtended() {
 		return rightSolenoid.get();
+	}
+	
+	/**
+	 * @author Stepan
+	 * @return amount of time that the piston has been extended (in milliseconds)
+	 */
+	public double timeExtended() {
+		if(this.isExtended()) {
+			return extendedTimer.get();
+		}
+		else {
+			extendedTimer.reset();
+			return 0;
+		}
+	}
+	
+	/**
+	 * @author Stepan
+	 * @return amount of time that the piston has been retracted (in milliseconds)
+	 */
+	public double timeRetracted() {
+		if(!this.isExtended()) {
+			return retractedTimer.get();
+		}
+		else {
+			retractedTimer.reset();
+			return 0;
+		}
 	}
 }
