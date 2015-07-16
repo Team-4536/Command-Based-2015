@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Talon;
@@ -9,10 +10,23 @@ public class DriveTrain extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+
 	
+	/*---------------------------------------------Variables--------------------------*/
+	
+	/*-----Previous Values-----*/
+	public static double prevThrottleY, prevThrottleX, prevThrottleL, prevThrottleR = 0.0;
+	
+	/*---------------------------------------------Objects----------------------------*/
+	
+	/*-----Talons-----*/
 	Talon leftTalon;
 	Talon rightTalon;
 	
+	/*-----Timers----*/
+	Timer driveTimer;
+	
+	/*---------------------------------------------Methods---------------------------*/
 	/**
 	 * @author Liam
 	 * @param leftTalonChannel - The PWM channel of the left talon of the drive train
@@ -42,6 +56,9 @@ public class DriveTrain extends Subsystem {
     	
     	leftTalon.set(leftThrottle);
     	rightTalon.set(-rightThrottle);
+    	
+    	prevThrottleL = leftThrottle;
+    	prevThrottleR = rightThrottle;
     }
     
     /**
@@ -56,5 +73,28 @@ public class DriveTrain extends Subsystem {
     	
     	leftTalon.set(leftTalonThrottle);
     	rightTalon.set(rightTalonThrottle);
+    	
+    	prevThrottleY = forwardThrottle;
+    	prevThrottleX = turnThrottle;
+    }
+    
+    public static double getPrevThrottleY() {
+    	
+    	return prevThrottleY;
+    }
+    
+    public static double getPrevThrottleX() {
+    	
+    	return prevThrottleX;
+    }
+    
+    public static double getPrevThrottleL() {
+    	
+    	return prevThrottleL;
+    }
+    
+    public static double getPrevThrottleR() {
+    	
+    	return prevThrottleR;
     }
 }

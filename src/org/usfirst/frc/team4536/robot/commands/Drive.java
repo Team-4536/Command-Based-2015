@@ -24,7 +24,19 @@ public class Drive extends CommandBase {
 	 * @author Noah
 	 */
     protected void execute() {
-    	driveTrain.arcadeDrive(Utilities.speedCurve(Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE), Utilities.speedCurve(Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE), Constants.SPEED_CURVE));
+    	driveTrain.arcadeDrive(
+    			Utilities.accelLimit(
+    			Utilities.speedCurve(
+    			Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE),
+    			Constants.SPEED_CURVE),
+    			driveTrain.getPrevThrottleY(), Constants.ACCEL_LIMIT),
+    			
+    			Utilities.accelLimit(
+    			Utilities.speedCurve(
+    			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),
+    			Constants.SPEED_CURVE),
+    			driveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT));
+    	
     	SmartDashboard.putNumber("Time", Utilities.getTime());
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
     }
