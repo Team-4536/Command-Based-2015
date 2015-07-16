@@ -5,7 +5,7 @@ public class Constants {
 	/*---------------------------------------Drive Train--------------------------------*/
 	
 	public static final double SPEED_CURVE = 2;
-	public static final double ACCEL_LIMIT = 10.0;
+	public static final double ACCEL_LIMIT = 0.25;
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
