@@ -7,15 +7,12 @@ public class Utilities {
 	
 	/*-----------------------------------------------------variables--------------------------------------------*/
 	
-	/*********
-	Cycle Time
-	**********/
+	/*-----Cycle Time-----*/
 	private static double currentTime, prevTime = 0.0;
 	public static double cycleTime = 0.0;
 	
-	/*****************
-	Acceleration Limit
-	******************/
+	/*-----AccelerationLimit-----*/
+	private static double prevDriveTrainThrottle, prevElevatorThrottle, throttleDiff, accelerationLimit = 0.0;
 	public static double finalThrottle = 0.0;
 	
 	/*------------------------------------------------------methods---------------------------------------------*/
@@ -141,8 +138,24 @@ public class Utilities {
 		return cycleTime;
 	}
 	
-	public static double accelLimit(double throttle, Object driveTrain) {
+	/**
+	 * @author Liam
+	 * @param throttle - the throttle of an object.
+	 * @param prevThrottle - Throttle Value from previous cycle of code.
+	 * @param fullSpeedTime - The amount of time it will take the throttle to reach full speed [-1, 1]. It is a double 
+	 * @return finalThrottle - returns the throttle adjusted to be within the bounds of the acceleration limit.
+	 */
+	public static double accelLimit(double throttle, double prevThrottle, double fullSpeedTime) {
 		
+		finalThrottle = throttle;
+		
+		throttleDiff = throttle - prevThrottle;
+		accelerationLimit = Utilities.getCycleTime() / fullSpeedTime;
+		
+		if (throttleDiff > accelerationLimit)
+			finalThrottle = prevThrottle + accelerationLimit;
+		else if (throttleDiff < -accelerationLimit)
+			finalThrottle = prevThrottle - accelerationLimit;
 		
 		return finalThrottle;
 	}
