@@ -28,12 +28,17 @@ public class OI {
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		canburglerToggleButton = new JoystickButton(mainStick, 3);
 		
-
-		Button secondaryStickButton6 = new JoystickButton(secondaryStick, 6);
+		Button secondaryStickButton2 = new JoystickButton(secondaryStick, 2);
 		Button secondaryStickButton3 = new JoystickButton(secondaryStick, 3);
+		Button secondaryStickButton4 = new JoystickButton(secondaryStick, 4);
+		Button secondaryStickButton5 = new JoystickButton(secondaryStick, 5);
+		Button secondaryStickButton6 = new JoystickButton(secondaryStick, 6);
 		
+		secondaryStickButton2.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_BOTTOM_OF_FEEDER_STATION));
+		secondaryStickButton3.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_TOP_OF_FEEDER_STATION));
+		secondaryStickButton4.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_SCORING_PLATFORM));
+		secondaryStickButton5.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_RECYCLING_CONTAINER));
 		secondaryStickButton6.whenPressed(new DriveElevatorWithStick());
-		secondaryStickButton3.whenPressed(new DriveElevatorToHeight(50));
 
 		platformToggleButton.whenPressed(new TogglePlatform());
 		
