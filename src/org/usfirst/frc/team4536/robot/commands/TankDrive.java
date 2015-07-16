@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
+import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4536.robot.commands.CommandBase;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
@@ -21,6 +21,13 @@ public class TankDrive extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+		DriveTrain.prevThrottleL = 0.0;
+		DriveTrain.prevThrottleR = 0.0;
+		DriveTrain.prevThrottleX = 0.0;
+		DriveTrain.prevThrottleY = 0.0;
+		
+		driveTrain.tankDrive(0.0, 0.0);
     }
 
     // Called repeatedly when this Command is scheduled to run
