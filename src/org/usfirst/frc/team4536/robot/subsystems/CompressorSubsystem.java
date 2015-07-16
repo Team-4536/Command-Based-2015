@@ -9,18 +9,30 @@ public class CompressorSubsystem extends Subsystem{
 	
 	Compressor compressor;
 	
+	/**
+	 * @author Stepan
+	 */
 	public CompressorSubsystem() {
 		compressor = new Compressor();
 	}
 	
+	/**
+	 * @author Stepan
+	 */
 	public void initDefaultCommand() {
 		
 	}
 	
+	/**
+	 * @author Stepan
+	 */
 	public void startComp() {
 		compressor.start();
 	}
 	
+	/**
+	 * @ author Stepan
+	 */
 	public void stopComp() {
 		compressor.stop();
 	}
