@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
+import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
@@ -18,6 +18,12 @@ public class Drive extends CommandBase {
 	}
 	
 	protected void initialize() {
+		DriveTrain.prevThrottleL = 0.0;
+		DriveTrain.prevThrottleR = 0.0;
+		DriveTrain.prevThrottleX = 0.0;
+		DriveTrain.prevThrottleY = 0.0;
+		
+		driveTrain.arcadeDrive(0.0, 0.0);
     }
 	
 	/**
