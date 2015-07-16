@@ -131,7 +131,7 @@ public class Utilities {
 	 */
 	public static double getCycleTime() {
 		
-		currentTime = Utilities.getTime();
+		currentTime = getTime();
 		cycleTime = currentTime - prevTime;
 		prevTime = currentTime;
 		
