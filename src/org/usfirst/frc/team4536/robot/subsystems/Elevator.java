@@ -26,6 +26,7 @@ public class Elevator extends Subsystem {
  double setHeight;
  double currentHeight;
  double correction;
+ int totes;
  
  
  public Elevator (int talonChannel, 
@@ -41,6 +42,9 @@ public class Elevator extends Subsystem {
      topLimitSwitch = new DigitalInput(topLimitSwitchChannel);
      middleLimitSwitch = new DigitalInput(middleLimitSwitchChannel);
      bottomLimitSwitch = new DigitalInput(bottomLimitSwitchChannel); 
+     
+     correction = 0;
+     totes = 0;
  }
  
     /**
@@ -95,6 +99,10 @@ public class Elevator extends Subsystem {
       elevatorTalon.set(-verticalThrottle);
  }
  
+ public int numberOfTotes(){
+	 return totes; 
+ }
+ 
  
  public void setActualHeight(double actualHeight){
   correction = actualHeight - elevatorEncoder.get()/Constants.TICKS_PER_INCHES;
@@ -109,12 +117,14 @@ public class Elevator extends Subsystem {
   
   if (this.middleLimitSwitchValue()) {
    setActualHeight(Constants.MIDDLE_LIMIT_SWITCH_HEIGHT);
+//   totes =+ 1;
   }
   
   if (this.bottomLimitSwitchValue() == true) {
    setActualHeight(Constants.BOTTOM_LIMIT_SWITCH_HEIGHT);
   }
-   
+  
+  System.out.println(totes);
 
  }
  

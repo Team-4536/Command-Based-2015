@@ -10,11 +10,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends CommandBase {
 	
+	double speedLimit;
+	
 	/**
 	 * @author Noah
 	 */
-	public Drive() {
+	public Drive(double speedLimit) {
 		requires(driveTrain);
+		this.speedLimit = speedLimit;
 	}
 	
 	protected void initialize() {
@@ -24,12 +27,13 @@ public class Drive extends CommandBase {
 	 * @author Noah
 	 */
     protected void execute() {
-    	driveTrain.arcadeDrive(Utilities.speedCurve(Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE), Utilities.speedCurve(Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE), Constants.SPEED_CURVE));
+    	driveTrain.arcadeDrive(speedLimit*Utilities.speedCurve(Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE), Constants.SPEED_CURVE), speedLimit*Utilities.speedCurve(Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE), Constants.SPEED_CURVE));
     	SmartDashboard.putNumber("Time", Utilities.getTime());
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
     }
     
     protected boolean isFinished() {
+    	
         return false;
     }
     

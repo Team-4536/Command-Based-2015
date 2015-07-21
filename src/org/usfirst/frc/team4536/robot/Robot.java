@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
     Command compressorCommand;
     Command tankDriveCommand;
     Command toggleCanbuglerCommand;
+    Command driveElevatorWithStick;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,15 +35,17 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
-        driveCommand = new Drive();
+        driveCommand = new Drive(.3);
         compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
         toggleCanbuglerCommand = new ToggleCanburgler();
+        driveElevatorWithStick = new DriveElevatorWithStick();
         
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		
 	}
 
     public void autonomousInit() {
@@ -89,6 +92,8 @@ public class Robot extends IterativeRobot {
         
         if (driveCommand != null)
         	driveCommand.start();
+        if(driveElevatorWithStick != null)
+        	driveElevatorWithStick.start();
         
     }
 

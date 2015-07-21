@@ -10,11 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveElevatorToHeight extends CommandBase {
  
  double desiredHeight;
+ double speedLimit;
 
-    public DriveElevatorToHeight(double Height) {
+    public DriveElevatorToHeight(double Height, double speedLimit) {
         // Use requires() here to declare subsystem dependencies
         requires(elevator);
         desiredHeight = Height;
+        this.speedLimit = speedLimit;
+        
     }
 
     // Called just before this Command runs the first time
@@ -26,7 +29,7 @@ public class DriveElevatorToHeight extends CommandBase {
     protected void execute() {
      
      elevator.update();
-     elevator.drive(Utilities.limit(desiredHeight - elevator.getCurrentHeight())); 
+     elevator.drive(speedLimit*Utilities.limit(desiredHeight - elevator.getCurrentHeight())); 
      
     }
 
