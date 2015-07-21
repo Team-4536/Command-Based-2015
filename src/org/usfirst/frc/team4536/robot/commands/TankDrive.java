@@ -32,7 +32,7 @@ public class TankDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.tankDrive(Utilities.speedCurve(-OI.mainStick.getY(), Constants.SPEED_CURVE), Utilities.speedCurve(-OI.secondaryStick.getY(), Constants.SPEED_CURVE));
+    	driveTrain.tankDrive(Utilities.speedCurve(-OI.mainStick.getY(), Constants.FORWARD_SPEED_CURVE), Utilities.speedCurve(-OI.secondaryStick.getY(), Constants.TURN_SPEED_CURVE));
     }
 
     // Make this return true when this Command no longer needs to run execute()

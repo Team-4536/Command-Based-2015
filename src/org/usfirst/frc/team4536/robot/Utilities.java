@@ -131,7 +131,7 @@ public class Utilities {
 	 */
 	public static double getCycleTime() {
 		
-		currentTime = getTime();
+		currentTime = Utilities.getTime();
 		cycleTime = currentTime - prevTime;
 		prevTime = currentTime;
 		
@@ -150,7 +150,7 @@ public class Utilities {
 		finalThrottle = throttle;
 		
 		throttleDiff = throttle - prevThrottle;
-		accelerationLimit = Utilities.getCycleTime() / fullSpeedTime;
+		accelerationLimit = getCycleTime() / fullSpeedTime;
 		
 		if (throttleDiff > accelerationLimit)
 			finalThrottle = prevThrottle + accelerationLimit;

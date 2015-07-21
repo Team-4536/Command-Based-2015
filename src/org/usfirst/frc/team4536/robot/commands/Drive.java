@@ -10,6 +10,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends CommandBase {
 	
+	private static double deadZoneY = 0.0, deadZoneX = 0.0,
+						speedCurveY = 0.0, speedCurveX = 0.0,
+						finalThrottleY = 0.0, finalThrottleX = 0.0;
+	
 	/**
 	 * @author Noah
 	 */
@@ -27,11 +31,31 @@ public class Drive extends CommandBase {
     }
 	
 	/**
-	 * @author Noah
+	 * @author Noah and Liam
 	 */
     protected void execute() {
-    	driveTrain.arcadeDrive(
-    			Utilities.accelLimit(
+    	
+    	deadZoneY = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
+    	deadZoneX = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
+    	
+    	speedCurveY = Utilities.speedCurve(deadZoneY, Constants.FORWARD_SPEED_CURVE);
+    	speedCurveX = Utilities.speedCurve(deadZoneX, Constants.TURN_SPEED_CURVE);
+    	
+    	finalThrottleY = Utilities.accelLimit(speedCurveY, DriveTrain.getPrevThrottleY(), Constants.ACCEL_LIMIT);
+    	finalThrottleX = Utilities.accelLimit(speedCurveX, DriveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT);
+    	
+    	SmartDashboard.putNumber("Previous Y:", DriveTrain.getPrevThrottleY());
+    	SmartDashboard.putNumber("throttleY", finalThrottleY);
+    	SmartDashboard.putNumber("throttleX", finalThrottleX);
+    	
+    	driveTrain.arcadeDrive(finalThrottleY, finalThrottleX);
+    	
+    	SmartDashboard.putNumber("Updated Previous Y", DriveTrain.getPrevThrottleY());
+    	
+    	/*driveTrain.arcadeDrive(
+    			
+    			
+    			/*Utilities.accelLimit(
     			Utilities.speedCurve(
     			Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE),
     			Constants.SPEED_CURVE),
@@ -41,7 +65,7 @@ public class Drive extends CommandBase {
     			Utilities.speedCurve(
     			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),
     			Constants.SPEED_CURVE),
-    			driveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT));
+    			driveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT));*/
     	
     	SmartDashboard.putNumber("Time", Utilities.getTime());
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
