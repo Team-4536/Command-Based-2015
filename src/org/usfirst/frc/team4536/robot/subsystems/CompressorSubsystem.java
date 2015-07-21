@@ -25,6 +25,7 @@ public class CompressorSubsystem extends Subsystem{
 	
 	/**
 	 * @author Stepan
+	 * Start the compressor running in closed loop control mode
 	 */
 	public void startComp() {
 		compressor.start();
@@ -32,6 +33,7 @@ public class CompressorSubsystem extends Subsystem{
 	
 	/**
 	 * @ author Stepan
+	 * Stops the compressor running in closed loop control mode
 	 */
 	public void stopComp() {
 		compressor.stop();
