@@ -124,7 +124,7 @@ public class Elevator extends Subsystem {
    setActualHeight(Constants.BOTTOM_LIMIT_SWITCH_HEIGHT);
   }
   
-  System.out.println(totes);
+  System.out.println(currentHeight);
 
  }
  

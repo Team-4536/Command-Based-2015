@@ -23,10 +23,9 @@ public class OI {
 		
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
+		
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		canburglerToggleButton = new JoystickButton(mainStick, 3);
-		
-		Button mainStickButton1 = new JoystickButton(mainStick, 1);
 		
 		Button goToBottomOfFeederStationButton = new JoystickButton(secondaryStick, 2);
 		Button goToTopOfFeederStationButton = new JoystickButton(secondaryStick, 3);
