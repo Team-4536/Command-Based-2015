@@ -6,7 +6,6 @@ import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
 import org.usfirst.frc.team4536.robot.Utilities;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends CommandBase {
 	
@@ -42,9 +41,6 @@ public class Drive extends CommandBase {
     			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),
     			Constants.SPEED_CURVE),
     			driveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT));
-    	
-    	SmartDashboard.putNumber("Time", Utilities.getTime());
-    	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
     }
     
     protected boolean isFinished() {
