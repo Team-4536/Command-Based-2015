@@ -20,6 +20,9 @@ public class Piston extends Subsystem{
 		leftSolenoid = new Solenoid(leftSolenoidChannel);
 		rightSolenoid = new Solenoid(rightSolenoidChannel);
 		
+		extendedTimer = new Timer();
+		retractedTimer = new Timer();
+		
 		extendedTimer.start();
 		retractedTimer.start();
 	}
