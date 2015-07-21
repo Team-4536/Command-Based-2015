@@ -41,8 +41,11 @@ public class Drive extends CommandBase {
     	speedCurveY = Utilities.speedCurve(deadZoneY, Constants.FORWARD_SPEED_CURVE);
     	speedCurveX = Utilities.speedCurve(deadZoneX, Constants.TURN_SPEED_CURVE);
     	
-    	finalThrottleY = Utilities.accelLimit(speedCurveY, DriveTrain.getPrevThrottleY(), Constants.ACCEL_LIMIT);
-    	finalThrottleX = Utilities.accelLimit(speedCurveX, DriveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT);
+    	finalThrottleY = speedCurveY;
+    	finalThrottleX = speedCurveX;
+    	
+    	//finalThrottleY = Utilities.accelLimit(speedCurveY, DriveTrain.getPrevThrottleY(), Constants.FORWARD_FULL_SPEED_TIME);
+    	//finalThrottleX = Utilities.accelLimit(speedCurveX, DriveTrain.getPrevThrottleX(), Constants.TURN_FULL_SPEED_TIME);
     	
     	SmartDashboard.putNumber("Previous Y:", DriveTrain.getPrevThrottleY());
     	SmartDashboard.putNumber("throttleY", finalThrottleY);
@@ -51,21 +54,6 @@ public class Drive extends CommandBase {
     	driveTrain.arcadeDrive(finalThrottleY, finalThrottleX);
     	
     	SmartDashboard.putNumber("Updated Previous Y", DriveTrain.getPrevThrottleY());
-    	
-    	/*driveTrain.arcadeDrive(
-    			
-    			
-    			/*Utilities.accelLimit(
-    			Utilities.speedCurve(
-    			Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE),
-    			Constants.SPEED_CURVE),
-    			driveTrain.getPrevThrottleY(), Constants.ACCEL_LIMIT),
-    			
-    			Utilities.accelLimit(
-    			Utilities.speedCurve(
-    			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),
-    			Constants.SPEED_CURVE),
-    			driveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT));*/
     	
     	SmartDashboard.putNumber("Time", Utilities.getTime());
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());

@@ -150,7 +150,7 @@ public class Utilities {
 		finalThrottle = throttle;
 		
 		throttleDiff = throttle - prevThrottle;
-		accelerationLimit = getCycleTime() / fullSpeedTime;
+		accelerationLimit = Utilities.getCycleTime() / fullSpeedTime;
 		
 		if (throttleDiff > accelerationLimit)
 			finalThrottle = prevThrottle + accelerationLimit;
