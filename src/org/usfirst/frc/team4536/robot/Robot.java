@@ -68,7 +68,10 @@ public class Robot extends IterativeRobot {
         	
         	Utilities.startTimer();
         	autonomousCommand.cancel();
-        } 
+        	
+            if (driveCommand != null)
+            	driveCommand.start();
+        }
     }
 
     /**
@@ -87,10 +90,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
-        if (driveCommand != null)
-        	driveCommand.start();
-        
     }
 
     /**
