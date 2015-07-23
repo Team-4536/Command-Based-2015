@@ -40,6 +40,7 @@ public class Robot extends IterativeRobot {
         tankDriveCommand = new TankDrive();
         toggleCanbuglerCommand = new ToggleCanburgler();
         
+        Utilities.startTimer();
     }
 	
 	public void disabledPeriodic() {
@@ -66,7 +67,7 @@ public class Robot extends IterativeRobot {
     	
         if (autonomousCommand != null) {
         	
-        	Utilities.startTimer();
+        	Utilities.resetTimer();
         	autonomousCommand.cancel();
         	
             if (driveCommand != null)
