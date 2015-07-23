@@ -45,8 +45,7 @@ public class Drive extends CommandBase {
     protected void execute() {
     	
     	//SmartDashboard.putNumber("Acceleration Limit Test", Utilities.accelLimit(1, , fullSpeedTime));
-    	
-    	
+    	Utilities.updateCycleTime();
     	
     	deadZoneY = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
     	deadZoneX = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
@@ -60,16 +59,22 @@ public class Drive extends CommandBase {
     	finalThrottleY = Utilities.accelLimit(speedCurveY, DriveTrain.getPrevThrottleY(), Constants.FORWARD_FULL_SPEED_TIME);
     	finalThrottleX = Utilities.accelLimit(speedCurveX, DriveTrain.getPrevThrottleX(), Constants.TURN_FULL_SPEED_TIME);
     	
-    	SmartDashboard.putNumber("Previous Y:", DriveTrain.getPrevThrottleY());
+    	/*SmartDashboard.putNumber("Previous Y:", DriveTrain.getPrevThrottleY());
     	SmartDashboard.putNumber("throttleY", finalThrottleY);
     	SmartDashboard.putNumber("throttleX", finalThrottleX);
-    	
+    	*/
+    	System.out.println("Prev Y: " + DriveTrain.getPrevThrottleY());
+    	System.out.println("Prev X: " + DriveTrain.getPrevThrottleX());
+    	System.out.println("ThrottleY: " + finalThrottleY);
+    	System.out.println("ThrottleX: " + finalThrottleX);
     	driveTrain.arcadeDrive(finalThrottleY, finalThrottleX);
-    	
+    	System.out.println("Updated Prev Y" + DriveTrain.getPrevThrottleY());
+    	System.out.println("Updated Prev X" + DriveTrain.getPrevThrottleX());
+    	/*
     	SmartDashboard.putNumber("Updated Previous Y", DriveTrain.getPrevThrottleY());
     	
     	SmartDashboard.putNumber("Time", Utilities.getTime());
-    	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
+    	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());*/
     }
     
     protected boolean isFinished() {

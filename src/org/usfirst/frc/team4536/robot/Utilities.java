@@ -129,11 +129,14 @@ public class Utilities {
 	 * @author Liam
 	 * @return the cycle time of our code is returned 
 	 */
-	public static double getCycleTime() {
+	public static void updateCycleTime() {
 		
 		currentTime = Utilities.getTime();
 		cycleTime = currentTime - prevTime;
 		prevTime = currentTime;
+	}
+	
+	public static double getCycleTime() {
 		
 		return cycleTime;
 	}
@@ -147,16 +150,19 @@ public class Utilities {
 	 */
 	public static double accelLimit(double throttle, double prevThrottle, double fullSpeedTime) {
 		
-		finalThrottle = throttle;
+		//finalThrottle = throttle;
 		
-		throttleDiff = throttle - prevThrottle;
+		//throttleDiff = throttle - prevThrottle;
 		accelerationLimit = Utilities.getCycleTime() / fullSpeedTime;
-		
+
+		/*
 		if (throttleDiff > accelerationLimit)
 			finalThrottle = prevThrottle + accelerationLimit;
 		else if (throttleDiff < -accelerationLimit)
 			finalThrottle = prevThrottle - accelerationLimit;
 		
 		return finalThrottle;
+		*/
+		return throttle;
 	}
 }
