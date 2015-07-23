@@ -150,19 +150,18 @@ public class Utilities {
 	 */
 	public static double accelLimit(double throttle, double prevThrottle, double fullSpeedTime) {
 		
-		//finalThrottle = throttle;
+		finalThrottle = throttle;
 		
-		//throttleDiff = throttle - prevThrottle;
-		accelerationLimit = Utilities.getCycleTime() / fullSpeedTime;
+		throttleDiff = throttle - prevThrottle;
 
-		/*
+		accelerationLimit = 0.02 / fullSpeedTime;
+
+		
 		if (throttleDiff > accelerationLimit)
 			finalThrottle = prevThrottle + accelerationLimit;
 		else if (throttleDiff < -accelerationLimit)
 			finalThrottle = prevThrottle - accelerationLimit;
 		
 		return finalThrottle;
-		*/
-		return throttle;
 	}
 }
