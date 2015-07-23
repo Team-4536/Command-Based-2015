@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.subsystems.*;
 import org.usfirst.frc.team4536.robot.commands.*;
 
@@ -39,6 +40,7 @@ public class Robot extends IterativeRobot {
         tankDriveCommand = new TankDrive();
         toggleCanbuglerCommand = new ToggleCanburgler();
         
+        Utilities.startTimer();
     }
 	
 	public void disabledPeriodic() {
@@ -65,9 +67,12 @@ public class Robot extends IterativeRobot {
     	
         if (autonomousCommand != null) {
         	
-        	Utilities.startTimer();
+        	Utilities.resetTimer();
         	autonomousCommand.cancel();
-        } 
+        	
+            if (driveCommand != null)
+            	driveCommand.start();
+        }
     }
 
     /**
@@ -86,10 +91,6 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        
-        if (driveCommand != null)
-        	driveCommand.start();
-        
     }
 
     /**

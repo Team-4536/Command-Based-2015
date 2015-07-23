@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
+import org.usfirst.frc.team4536.robot.Utilities;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Gyro;
@@ -15,7 +17,7 @@ public class DriveTrain extends Subsystem {
 	/*---------------------------------------------Variables--------------------------*/
 	
 	/*-----Previous Values-----*/
-	public static double prevThrottleY, prevThrottleX, prevThrottleL, prevThrottleR = 0.0;
+	public static double prevThrottleY = 0.0, prevThrottleX = 0.0, prevThrottleL = 0.0, prevThrottleR = 0.0;
 	
 	/*---------------------------------------------Objects----------------------------*/
 	

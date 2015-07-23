@@ -4,8 +4,10 @@ public class Constants {
 
 	/*---------------------------------------Drive Train--------------------------------*/
 	
-	public static final double SPEED_CURVE = 2;
-	public static final double ACCEL_LIMIT = 0.25;
+	public static final double FORWARD_SPEED_CURVE = 2;
+	public static final double TURN_SPEED_CURVE = 2;
+	public static final double FORWARD_FULL_SPEED_TIME = 2.0;
+	public static final double TURN_FULL_SPEED_TIME = 2.0;
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
