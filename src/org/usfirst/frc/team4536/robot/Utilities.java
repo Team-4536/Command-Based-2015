@@ -66,13 +66,13 @@ public class Utilities {
 	public static double speedCurve(double input, double curve) {
 		//negative curves cause asymptotes, leading to overflow errors. Curves smaller than 0.1 aren't very useful.
 		double adjustedCurve = limit(curve, 0.1, Double.MAX_VALUE);
-		
+		double adjustedInput = limit(input, 1.0);
 		//if the input is negative, outputs can be undefined and positive for certain curves
 		if(input < 0) {
-			return -Math.pow(Math.abs(input), adjustedCurve);
+			return -Math.pow(Math.abs(adjustedInput), adjustedCurve);
 		}
 		
-		return Math.pow(input, adjustedCurve);
+		return Math.pow(adjustedInput, adjustedCurve);
 	}
 
 	/**
