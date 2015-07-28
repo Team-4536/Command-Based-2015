@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class HoldElevator extends CommandBase {
 	double holdingHeight;
-	boolean wasInterrupted;
+	boolean wasInterrupted = true;
 	
     public HoldElevator() {
         // Use requires() here to declare subsystem dependencies
@@ -37,6 +37,7 @@ public class HoldElevator extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("It ended");
     }
 
     // Called when another command which requires one or more of the same

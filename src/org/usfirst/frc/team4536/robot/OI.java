@@ -41,6 +41,7 @@ public class OI {
 		goToScoringPlatformButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_SCORING_PLATFORM, .25));
 		goToRecyclingContainerButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_RECYCLING_CONTAINER, 1));
 		elevatorManualOverrideButton.whileHeld(new DriveElevatorWithStick());
+		elevatorManualOverrideButton.whenReleased(new HoldElevator());
 	
 		
 		platformToggleButton.whenPressed(new TogglePlatform());

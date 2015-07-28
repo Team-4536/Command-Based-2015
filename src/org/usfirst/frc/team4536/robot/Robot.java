@@ -70,6 +70,9 @@ public class Robot extends IterativeRobot {
         	Utilities.startTimer();
         	autonomousCommand.cancel();
         } 
+        
+       /* if (holdElevator != null);
+    		holdElevator.start();*/
     }
 
     /**
@@ -91,8 +94,6 @@ public class Robot extends IterativeRobot {
         
         if (driveCommand != null)
         	driveCommand.start();
-        if (holdElevator != null)
-        	holdElevator.start();
     }
 
     /**
