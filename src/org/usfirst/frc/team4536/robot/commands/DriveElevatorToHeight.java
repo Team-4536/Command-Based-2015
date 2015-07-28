@@ -31,11 +31,17 @@ public class DriveElevatorToHeight extends CommandBase {
      elevator.update();
      elevator.drive(speedLimit*Utilities.limit(desiredHeight - elevator.getCurrentHeight())); 
      System.out.println("desired" + desiredHeight);
+     System.out.println("current" + elevator.getCurrentHeight());
      
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if((desiredHeight + 0.1) > elevator.getCurrentHeight() 
+    		&& (desiredHeight -0.1) < elevator.getCurrentHeight()){
+    		return true;
+    	}
+    	
         return false;
     }
 
