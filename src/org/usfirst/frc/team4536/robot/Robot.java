@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
     Command compressorCommand;
     Command tankDriveCommand;
     Command toggleCanbuglerCommand;
+    Command holdElevator;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -38,7 +39,7 @@ public class Robot extends IterativeRobot {
         compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
         toggleCanbuglerCommand = new ToggleCanburgler();
-        
+        holdElevator = new HoldElevator();
     }
 	
 	public void disabledPeriodic() {
@@ -90,7 +91,8 @@ public class Robot extends IterativeRobot {
         
         if (driveCommand != null)
         	driveCommand.start();
-        
+        if (holdElevator != null)
+        	holdElevator.start();
     }
 
     /**

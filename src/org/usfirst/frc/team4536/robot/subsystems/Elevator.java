@@ -124,7 +124,7 @@ public class Elevator extends Subsystem {
    setActualHeight(Constants.BOTTOM_LIMIT_SWITCH_HEIGHT);
   }
   
-  System.out.println(currentHeight);
+  System.out.println("current" + currentHeight);
 
  }
  
@@ -133,7 +133,7 @@ public class Elevator extends Subsystem {
  }
  
  public double getCurrentHeight(){
-  return currentHeight;
+  return currentHeight;  
  }
 
     public void initDefaultCommand() {

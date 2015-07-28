@@ -4,8 +4,10 @@ import edu.wpi.first.wpilibj.buttons.Button;
 
 import org.usfirst.frc.team4536.robot.commands.*;
 import org.usfirst.frc.team4536.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -31,14 +33,15 @@ public class OI {
 		Button goToTopOfFeederStationButton = new JoystickButton(secondaryStick, 3);
 		Button goToScoringPlatformButton = new JoystickButton(secondaryStick, 4);
 		Button goToRecyclingContainerButton = new JoystickButton(secondaryStick, 5);
-		Button elevatorManuelOverideButton = new JoystickButton(secondaryStick, 6);
+		Button elevatorManualOverrideButton = new JoystickButton(secondaryStick, 6);
+		Button a = new JoystickButton(secondaryStick, 7);
 		
 		goToBottomOfFeederStationButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_BOTTOM_OF_FEEDER_STATION, 1));
 		goToTopOfFeederStationButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_TOP_OF_FEEDER_STATION, 1));
 		goToScoringPlatformButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_SCORING_PLATFORM, .25));
 		goToRecyclingContainerButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_RECYCLING_CONTAINER, 1));
-		elevatorManuelOverideButton.whileHeld(new DriveElevatorWithStick());
-		elevatorManuelOverideButton.whenReleased(new DriveElevatorToHeight(CommandBase.elevator.getCurrentHeight(), 0.5));
+		elevatorManualOverrideButton.whileHeld(new DriveElevatorWithStick());
+	
 		
 		platformToggleButton.whenPressed(new TogglePlatform());
 		

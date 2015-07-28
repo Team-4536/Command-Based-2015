@@ -1,23 +1,17 @@
-
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import org.usfirst.frc.team4536.robot.commands.CommandBase;
-import org.usfirst.frc.team4536.robot.OI;
-import org.usfirst.frc.team4536.robot.Robot;
-import org.usfirst.frc.team4536.robot.Utilities;
-
 /**
  *
  */
-
-
-public class DriveElevatorWithStick extends CommandBase {
-
-    public DriveElevatorWithStick() {
+public class HoldElevator extends CommandBase {
+	double holdingHeight;
+	boolean wasInterrupted;
+	
+    public HoldElevator() {
         // Use requires() here to declare subsystem dependencies
-     requires(elevator);
+        requires(elevator);
     }
 
     // Called just before this Command runs the first time
@@ -26,11 +20,14 @@ public class DriveElevatorWithStick extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-     
-     elevator.drive(OI.secondaryStick.getY());  
-     elevator.update();
-     System.out.println("drive with stick");
-     
+    	CommandBase.elevator.drive(holdingHeight - elevator.getCurrentHeight());
+    	System.out.println("holding" + holdingHeight);
+    	elevator.update();
+    	
+    	if (wasInterrupted){
+    		holdingHeight = elevator.getCurrentHeight();
+    		wasInterrupted = false;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -45,6 +42,6 @@ public class DriveElevatorWithStick extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	this.end();
+    	wasInterrupted = true;
     }
 }
