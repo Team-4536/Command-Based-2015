@@ -22,10 +22,8 @@ public class TankDrive extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-		DriveTrain.prevThrottleL = 0.0;
-		DriveTrain.prevThrottleR = 0.0;
-		DriveTrain.prevThrottleX = 0.0;
-		DriveTrain.prevThrottleY = 0.0;
+		DriveTrain.prevLeftThrottle = 0.0;
+		DriveTrain.prevRightThrottle = 0.0;
 		
 		driveTrain.tankDrive(0.0, 0.0);
     }

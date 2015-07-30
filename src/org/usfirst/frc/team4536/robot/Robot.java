@@ -65,14 +65,12 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
     	
-        if (autonomousCommand != null) {
-        	
+        if (autonomousCommand != null) {        	
         	Utilities.resetTimer();
         	autonomousCommand.cancel();
-        	
-            if (driveCommand != null)
-            	driveCommand.start();
         }
+        if (driveCommand != null)
+        	driveCommand.start();
     }
 
     /**

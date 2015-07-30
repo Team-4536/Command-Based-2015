@@ -2,7 +2,7 @@ package org.usfirst.frc.team4536.robot.subsystems;
 
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
-import org.usfirst.frc.team4536.robot.commands.Drive;
+import org.usfirst.frc.team4536.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -10,26 +10,18 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Talon;
 
 public class DriveTrain extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
 
+	//tank drive previous throttles
+	public static double prevLeftThrottle = 0.0, prevRightThrottle = 0.0;
 	
-	/*---------------------------------------------Variables--------------------------*/
+	//arcade drive previous throttles
+	public static double prevForwardThrottle = 0.0, prevTurnThrottle = 0.0;
 	
-	/*-----Previous Values-----*/
-	public static double prevThrottleY = 0.0, prevThrottleX = 0.0, prevThrottleL = 0.0, prevThrottleR = 0.0;
-	
-	/*---------------------------------------------Objects----------------------------*/
-	
-	/*-----Talons-----*/
 	Talon leftTalon;
 	Talon rightTalon;
 	
-	/*-----Timers----*/
 	Timer driveTimer;
 	
-	/*---------------------------------------------Methods---------------------------*/
 	/**
 	 * @author Liam
 	 * @param leftTalonChannel - The PWM channel of the left talon of the drive train
@@ -60,8 +52,8 @@ public class DriveTrain extends Subsystem {
     	leftTalon.set(leftThrottle);
     	rightTalon.set(-rightThrottle);
     	
-    	prevThrottleL = leftThrottle;
-    	prevThrottleR = rightThrottle;
+    	prevLeftThrottle = leftThrottle;
+    	prevRightThrottle = rightThrottle;
     }
     
     /**
@@ -77,27 +69,27 @@ public class DriveTrain extends Subsystem {
     	leftTalon.set(leftTalonThrottle);
     	rightTalon.set(rightTalonThrottle);
     	
-    	prevThrottleY = forwardThrottle;
-    	prevThrottleX = turnThrottle;
+    	prevForwardThrottle = forwardThrottle;
+    	prevTurnThrottle = turnThrottle;
     }
     
-    public static double getPrevThrottleY() {
+    public static double getPrevForwardThrottle() {
     	
-    	return prevThrottleY;
+    	return prevForwardThrottle;
     }
     
-    public static double getPrevThrottleX() {
+    public static double getPrevTurnThrottle() {
     	
-    	return prevThrottleX;
+    	return prevTurnThrottle;
     }
     
-    public static double getPrevThrottleL() {
+    public static double getPrevLeftThrottle() {
     	
-    	return prevThrottleL;
+    	return prevLeftThrottle;
     }
     
-    public static double getPrevThrottleR() {
+    public static double getPrevRightThrottle() {
     	
-    	return prevThrottleR;
+    	return prevRightThrottle;
     }
 }
