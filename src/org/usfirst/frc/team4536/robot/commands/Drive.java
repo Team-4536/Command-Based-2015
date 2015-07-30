@@ -9,6 +9,10 @@ import org.usfirst.frc.team4536.robot.Utilities;
 
 public class Drive extends CommandBase {
 	
+	private static double deadZoneY = 0.0, deadZoneX = 0.0,
+						speedCurveY = 0.0, speedCurveX = 0.0,
+						finalThrottleY = 0.0, finalThrottleX = 0.0;
+	
 	/**
 	 * @author Noah
 	 */
@@ -23,24 +27,34 @@ public class Drive extends CommandBase {
 		DriveTrain.prevThrottleY = 0.0;
 		
 		driveTrain.arcadeDrive(0.0, 0.0);
+		
+		deadZoneY = 0.0;
+		deadZoneX = 0.0;
+		
+		speedCurveY = 0.0;
+		speedCurveX = 0.0;
+		
+		finalThrottleY = 0.0;
+		finalThrottleX = 0.0;
     }
 	
 	/**
-	 * @author Noah
+	 * @author Noah and Liam
 	 */
     protected void execute() {
-    	driveTrain.arcadeDrive(
-    			Utilities.accelLimit(
-    			Utilities.speedCurve(
-    			Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE),
-    			Constants.SPEED_CURVE),
-    			driveTrain.getPrevThrottleY(), Constants.ACCEL_LIMIT),
-    			
-    			Utilities.accelLimit(
-    			Utilities.speedCurve(
-    			Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE),
-    			Constants.SPEED_CURVE),
-    			driveTrain.getPrevThrottleX(), Constants.ACCEL_LIMIT));
+    	
+    	Utilities.updateCycleTime();
+    	
+    	deadZoneY = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
+    	deadZoneX = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
+    	
+    	speedCurveY = Utilities.speedCurve(deadZoneY, Constants.FORWARD_SPEED_CURVE);
+    	speedCurveX = Utilities.speedCurve(deadZoneX, Constants.TURN_SPEED_CURVE);
+    	
+    	finalThrottleY = Utilities.accelLimit(speedCurveY, DriveTrain.getPrevThrottleY(), Constants.FORWARD_FULL_SPEED_TIME);
+    	finalThrottleX = Utilities.accelLimit(speedCurveX, DriveTrain.getPrevThrottleX(), Constants.TURN_FULL_SPEED_TIME);
+
+    	driveTrain.arcadeDrive(finalThrottleY, finalThrottleX);
     }
     
     protected boolean isFinished() {

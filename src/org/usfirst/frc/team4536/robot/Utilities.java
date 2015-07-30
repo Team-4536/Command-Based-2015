@@ -96,6 +96,7 @@ public class Utilities {
 	public static void startTimer() {
 		
 		timer.start();
+		prevTime = 0.0;
 	}
 	
 	/**
@@ -105,6 +106,7 @@ public class Utilities {
 	public static void resetTimer() {
 		
 		timer.reset();
+		prevTime = 0.0;
 	}
 	
 	/**
@@ -118,7 +120,7 @@ public class Utilities {
 	
 	/**
 	 * @author Liam
-	 * @return the current time of the timer in seconds
+	 * @return the current time of the timer in seconds.
 	 */
 	public static double getTime() {
 		
@@ -127,13 +129,20 @@ public class Utilities {
 	
 	/**
 	 * @author Liam
-	 * @return the cycle time of our code is returned 
+	 * Updates the cycle time calculation of our code. This should only be called once per cycle or it will be incorrect.
 	 */
-	public static double getCycleTime() {
+	public static void updateCycleTime() {
 		
-		currentTime = Utilities.getTime();
+		currentTime = getTime();
 		cycleTime = currentTime - prevTime;
 		prevTime = currentTime;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return The cycle time of our code in seconds.
+	 */
+	public static double getCycleTime() {
 		
 		return cycleTime;
 	}
@@ -142,7 +151,7 @@ public class Utilities {
 	 * @author Liam
 	 * @param throttle - the throttle of an object.
 	 * @param prevThrottle - Throttle Value from previous cycle of code.
-	 * @param fullSpeedTime - The amount of time it will take the throttle to reach full speed [-1, 1]. It is a double 
+	 * @param fullSpeedTime - The amount of time it will take the throttle to reach full speed. Range: [0, infinity+). It is a double. 
 	 * @return finalThrottle - returns the throttle adjusted to be within the bounds of the acceleration limit.
 	 */
 	public static double accelLimit(double throttle, double prevThrottle, double fullSpeedTime) {
@@ -150,7 +159,9 @@ public class Utilities {
 		finalThrottle = throttle;
 		
 		throttleDiff = throttle - prevThrottle;
-		accelerationLimit = Utilities.getCycleTime() / fullSpeedTime;
+
+		accelerationLimit = getCycleTime() / fullSpeedTime;
+
 		
 		if (throttleDiff > accelerationLimit)
 			finalThrottle = prevThrottle + accelerationLimit;
