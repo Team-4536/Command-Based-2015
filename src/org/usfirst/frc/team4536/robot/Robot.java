@@ -26,6 +26,7 @@ public class Robot extends IterativeRobot {
     Command compressorCommand;
     Command tankDriveCommand;
     Command toggleCanbuglerCommand;
+    Command smartDashboardCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -39,6 +40,7 @@ public class Robot extends IterativeRobot {
         compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
         toggleCanbuglerCommand = new ToggleCanburgler();
+        smartDashboardCommand = new SmartDashboardCommand();
         
         Utilities.startTimer();
     }
@@ -65,12 +67,14 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
     	
-        if (autonomousCommand != null) {        	
+        if(autonomousCommand != null) {        	
         	Utilities.resetTimer();
         	autonomousCommand.cancel();
         }
-        if (driveCommand != null)
+        if(driveCommand != null)
         	driveCommand.start();
+        if(smartDashboardCommand != null) 
+        	smartDashboardCommand.start();
     }
 
     /**
