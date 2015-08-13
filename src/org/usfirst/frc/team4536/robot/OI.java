@@ -21,19 +21,24 @@ public class OI {
 	public static Button platformToggleButton;
 	public static Button canburglerToggleButton;
 	
+	public static Button driveElevatorWithStickButton;
+	public static Button elevatorToHeight50Button;
+	
 	public OI() {
-		
+		//----------------initializations------------------
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
+		
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		canburglerToggleButton = new JoystickButton(mainStick, 3);
 		
-
-		Button secondaryStickButton6 = new JoystickButton(secondaryStick, 6);
-		Button secondaryStickButton3 = new JoystickButton(secondaryStick, 3);
+		driveElevatorWithStickButton = new JoystickButton(secondaryStick, 6);
+		elevatorToHeight50Button = new JoystickButton(secondaryStick, 3);
 		
-		secondaryStickButton6.whenPressed(new DriveElevatorWithStick());
-		secondaryStickButton3.whenPressed(new DriveElevatorToHeight(50));
+		
+		//-------------------actions------------------
+		driveElevatorWithStickButton.whenPressed(new DriveElevatorWithStick());
+		elevatorToHeight50Button.whenPressed(new DriveElevatorToHeight(50));
 
 		platformToggleButton.whenPressed(new TogglePlatform());
 		
