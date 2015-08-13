@@ -41,8 +41,6 @@ public class Robot extends IterativeRobot {
         tankDriveCommand = new TankDrive();
         toggleCanbuglerCommand = new ToggleCanburgler();
         smartDashboardCommand = new SmartDashboardCommand();
-        if(smartDashboardCommand != null) 
-        	smartDashboardCommand.start();
         
         Utilities.startTimer();
     }
@@ -57,6 +55,8 @@ public class Robot extends IterativeRobot {
         	autonomousCommand.start();
         if(compressorCommand != null)
             compressorCommand.start();
+        if(smartDashboardCommand != null) 
+        	smartDashboardCommand.start();
     }
 
     public void autonomousPeriodic() {
@@ -75,6 +75,8 @@ public class Robot extends IterativeRobot {
         }
         if(driveCommand != null)
         	driveCommand.start();
+        if(smartDashboardCommand != null) 
+        	smartDashboardCommand.start();
     }
 
     /**
@@ -86,6 +88,8 @@ public class Robot extends IterativeRobot {
         	driveCommand.cancel();
         if (compressorCommand != null) 
         	compressorCommand.cancel();
+        if(smartDashboardCommand != null) 
+        	smartDashboardCommand.start();
     }
 
     /**
