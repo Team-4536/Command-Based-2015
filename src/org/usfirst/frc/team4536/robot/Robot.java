@@ -88,8 +88,6 @@ public class Robot extends IterativeRobot {
         	driveCommand.cancel();
         if (compressorCommand != null) 
         	compressorCommand.cancel();
-        if(smartDashboardCommand != null) 
-        	smartDashboardCommand.start();
     }
 
     /**
