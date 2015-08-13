@@ -6,13 +6,10 @@ import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
 import org.usfirst.frc.team4536.robot.Utilities;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Drive extends CommandBase {
 	
-	private static double deadZoneY = 0.0, deadZoneX = 0.0,
-						speedCurveY = 0.0, speedCurveX = 0.0,
-						finalThrottleY = 0.0, finalThrottleX = 0.0;
+	private static double forwardThrottle, turnThrottle;
 	
 	/**
 	 * @author Noah
@@ -21,44 +18,36 @@ public class Drive extends CommandBase {
 		requires(driveTrain);
 	}
 	
+	/**
+	 * @author Stepan and Liam
+	 */
 	protected void initialize() {
-		DriveTrain.prevThrottleL = 0.0;
-		DriveTrain.prevThrottleR = 0.0;
-		DriveTrain.prevThrottleX = 0.0;
-		DriveTrain.prevThrottleY = 0.0;
+		DriveTrain.prevForwardThrottle = 0.0;
+		DriveTrain.prevTurnThrottle = 0.0;
+		
+		forwardThrottle = 0;
+		turnThrottle = 0;
 		
 		driveTrain.arcadeDrive(0.0, 0.0);
-		
-		deadZoneY = 0.0;
-		deadZoneX = 0.0;
-		
-		speedCurveY = 0.0;
-		speedCurveX = 0.0;
-		
-		finalThrottleY = 0.0;
-		finalThrottleX = 0.0;
     }
 	
 	/**
-	 * @author Noah and Liam
+	 * @author Noah, Liam and Stepan
 	 */
     protected void execute() {
     	
     	Utilities.updateCycleTime();
     	
-    	deadZoneY = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
-    	deadZoneX = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
+    	forwardThrottle = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
+    	turnThrottle = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
     	
-    	speedCurveY = Utilities.speedCurve(deadZoneY, Constants.FORWARD_SPEED_CURVE);
-    	speedCurveX = Utilities.speedCurve(deadZoneX, Constants.TURN_SPEED_CURVE);
+    	forwardThrottle = Utilities.speedCurve(forwardThrottle, Constants.FORWARD_SPEED_CURVE);
+    	turnThrottle = Utilities.speedCurve(turnThrottle, Constants.TURN_SPEED_CURVE);
     	
-    	finalThrottleY = Utilities.accelLimit(speedCurveY, DriveTrain.getPrevThrottleY(), Constants.FORWARD_FULL_SPEED_TIME);
-    	finalThrottleX = Utilities.accelLimit(speedCurveX, DriveTrain.getPrevThrottleX(), Constants.TURN_FULL_SPEED_TIME);
-
-    	driveTrain.arcadeDrive(finalThrottleY, finalThrottleX);
+    	forwardThrottle = Utilities.accelLimit(forwardThrottle, DriveTrain.getPrevForwardThrottle(), Constants.FORWARD_FULL_SPEED_TIME);
+    	turnThrottle = Utilities.accelLimit(turnThrottle, DriveTrain.getPrevTurnThrottle(), Constants.TURN_FULL_SPEED_TIME);
     	
-    	SmartDashboard.putNumber("Time", Utilities.getTime());
-    	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
+    	driveTrain.arcadeDrive(forwardThrottle, turnThrottle);
     }
     
     protected boolean isFinished() {
