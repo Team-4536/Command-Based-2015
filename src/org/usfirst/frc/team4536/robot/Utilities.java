@@ -1,11 +1,13 @@
 package org.usfirst.frc.team4536.robot;
 import java.lang.Math;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
 	
 	public static PowerDistributionPanel powerDistributionPanel = new PowerDistributionPanel();
+	public static Timer timer = new Timer();
 	
 	/*-----------------------------------------------------variables--------------------------------------------*/
 	
@@ -18,8 +20,6 @@ public class Utilities {
 	public static double finalThrottle = 0.0;
 	
 	/*------------------------------------------------------methods---------------------------------------------*/
-	
-	public static Timer timer = new Timer();
 	
 	/**
 	 * @ author Liam and Stepan

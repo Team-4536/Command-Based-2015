@@ -1,15 +1,19 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Talon;
 
 public class DriveTrain extends Subsystem {
+	
+	
 
 	//tank drive previous throttles
 	public static double prevLeftThrottle = 0.0, prevRightThrottle = 0.0;
@@ -20,7 +24,11 @@ public class DriveTrain extends Subsystem {
 	Talon leftTalon;
 	Talon rightTalon;
 	
+	/*-----Timer-----*/
 	Timer driveTimer;
+	
+	/*-----Encoder-----*/
+	public static Encoder rightDriveTrainEncoder = new Encoder(Constants.RIGHT_ENCODER_SLOT_A, Constants.RIGHT_ENCODER_SLOT_B);
 	
 	/**
 	 * @author Liam
@@ -92,4 +100,9 @@ public class DriveTrain extends Subsystem {
     	
     	return prevRightThrottle;
     }
+    
+	public static double getRightEncoderTicks() {
+		
+		return rightDriveTrainEncoder.get();
+	}
 }
