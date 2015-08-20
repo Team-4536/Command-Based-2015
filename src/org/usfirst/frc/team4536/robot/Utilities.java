@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4536.robot;
 import java.lang.Math;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
@@ -169,5 +170,22 @@ public class Utilities {
 			finalThrottle = prevThrottle - accelerationLimit;
 		
 		return finalThrottle;
+	}
+	
+	/**
+	 * @author Liam
+	 * @return The total current drawn from the power distribution board from ALL robot systems.
+	 */
+	public static double getTotalCurrent() {
+		
+		return 0;
+	}
+	
+	/**
+	 * 
+	 */
+	public static double getSlotCurrent() {
+		
+		return 0;
 	}
 }
