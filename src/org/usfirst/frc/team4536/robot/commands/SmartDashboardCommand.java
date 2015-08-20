@@ -1,7 +1,10 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SmartDashboardCommand extends CommandBase {
@@ -24,6 +27,7 @@ public class SmartDashboardCommand extends CommandBase {
     protected void execute() {
     	SmartDashboard.putNumber("Time", Utilities.getTime());
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
+    	SmartDashboard.putNumber("Gyro Angle", Utilities.getGyroAngle(RobotMap.GYRO_CHANNEL));
     }
     
     /**

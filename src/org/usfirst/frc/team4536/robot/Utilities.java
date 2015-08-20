@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4536.robot;
 import java.lang.Math;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Gyro;
 
 public class Utilities {
 	
@@ -170,4 +171,13 @@ public class Utilities {
 		
 		return finalThrottle;
 	}
+	
+	public static double getGyroAngle(int gyroChannel) {
+		Gyro gyro;
+		double gyroAngle;
+		gyro = new Gyro(gyroChannel);
+    	gyroAngle = gyro.getAngle();
+    	return gyroAngle;
+	}
+	
 }
