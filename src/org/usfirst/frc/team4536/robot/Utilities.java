@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
 	
+	public static PowerDistributionPanel powerDistributionPanel = new PowerDistributionPanel();
 	
 	/*-----------------------------------------------------variables--------------------------------------------*/
 	
@@ -178,14 +179,14 @@ public class Utilities {
 	 */
 	public static double getTotalCurrent() {
 		
-		return 0;
+		return powerDistributionPanel.getTotalCurrent();
 	}
 	
 	/**
 	 * 
 	 */
-	public static double getSlotCurrent() {
+	public static double getCurrent(int slot) {
 		
-		return 0;
+		return powerDistributionPanel.getCurrent(slot);
 	}
 }

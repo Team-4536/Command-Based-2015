@@ -24,6 +24,8 @@ public class SmartDashboardCommand extends CommandBase {
     protected void execute() {
     	SmartDashboard.putNumber("Time", Utilities.getTime());
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
+    	SmartDashboard.putNumber("Motor Current", Utilities.getCurrent(1));
+    	SmartDashboard.putNumber("Total Current", Utilities.getTotalCurrent());
     }
     
     /**
