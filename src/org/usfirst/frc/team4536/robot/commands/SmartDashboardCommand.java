@@ -2,6 +2,7 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 
@@ -29,8 +30,8 @@ public class SmartDashboardCommand extends CommandBase {
     	SmartDashboard.putNumber("Cycle Time", Utilities.getCycleTime());
     	SmartDashboard.putNumber("Motor Current", Utilities.getCurrent(1));
     	SmartDashboard.putNumber("Total Current", Utilities.getTotalCurrent());
-    	SmartDashboard.putNumber("Right Encoder Ticks: ", DriveTrain.getRightEncoderTicks());
-    	SmartDashboard.putNumber("Left Encoder Ticks: ", DriveTrain.getLeftEncoderTicks());
+    	SmartDashboard.putNumber("Right Encoder Inches: ", DriveTrain.getRightEncoderTicks() * Constants.DRIVE_TICKS_TO_INCHES);
+    	SmartDashboard.putNumber("Left Encoder Inches: ", DriveTrain.getLeftEncoderTicks() * Constants.DRIVE_TICKS_TO_INCHES);
     }
     
     /**

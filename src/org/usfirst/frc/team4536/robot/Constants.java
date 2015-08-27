@@ -26,6 +26,9 @@ public class Constants {
    	public static final int PDP_SLOTS = 16;
    	
    	/*---------------------------------------Encoder--------------------------------------*/
+   	
+   	public static final double DRIVE_TICKS_TO_INCHES = 18.14/360; //inches per 360 ticks for a 6 inch diameter wheel
+   	
    	//(Right side)
    	public static final int RIGHT_ENCODER_SLOT_A = 9;
    	public static final int RIGHT_ENCODER_SLOT_B = 8;

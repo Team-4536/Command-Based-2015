@@ -109,6 +109,6 @@ public class DriveTrain extends Subsystem {
 	
 	public static double getLeftEncoderTicks() {
 		
-		return rightDriveTrainEncoder.get();
+		return leftDriveTrainEncoder.get();
 	}
 }
