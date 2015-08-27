@@ -1,7 +1,11 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import java.io.IOException;
 import org.usfirst.frc.team4536.robot.FileWrite;
+
+//Helpful Link
+//http://www.homeandlearn.co.uk/java/write_to_textfile.html
 
 /**
  *
@@ -27,9 +31,9 @@ public class FileWriteCommand extends Command {
     		FileWrite data = new FileWrite(fileName, true);
     		data.writeToFile("YOLO, it works buddy - I'm not your buddy guy - I'm not your guy pal");
     	}
-    	catch (IOException){
+    	catch (IOException e){
     		
-    		
+    		System.out.println("Something is wrong");
     	}
     }
 
