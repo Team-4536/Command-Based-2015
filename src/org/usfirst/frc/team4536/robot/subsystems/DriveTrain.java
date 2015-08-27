@@ -29,6 +29,7 @@ public class DriveTrain extends Subsystem {
 	
 	/*-----Encoder-----*/
 	public static Encoder rightDriveTrainEncoder = new Encoder(Constants.RIGHT_ENCODER_SLOT_A, Constants.RIGHT_ENCODER_SLOT_B);
+	public static Encoder leftDriveTrainEncoder = new Encoder(Constants.LEFT_ENCODER_SLOT_A, Constants.LEFT_ENCODER_SLOT_B);
 	
 	/**
 	 * @author Liam
@@ -102,6 +103,11 @@ public class DriveTrain extends Subsystem {
     }
     
 	public static double getRightEncoderTicks() {
+		
+		return rightDriveTrainEncoder.get();
+	}
+	
+	public static double getLeftEncoderTicks() {
 		
 		return rightDriveTrainEncoder.get();
 	}

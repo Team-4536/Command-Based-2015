@@ -29,5 +29,9 @@ public class Constants {
    	//(Right side)
    	public static final int RIGHT_ENCODER_SLOT_A = 9;
    	public static final int RIGHT_ENCODER_SLOT_B = 8;
+   	
+   	//(Left Side)
+   	public static final int LEFT_ENCODER_SLOT_A = 7;
+   	public static final int LEFT_ENCODER_SLOT_B = 2;
 	
 }

@@ -30,6 +30,7 @@ public class SmartDashboardCommand extends CommandBase {
     	SmartDashboard.putNumber("Motor Current", Utilities.getCurrent(1));
     	SmartDashboard.putNumber("Total Current", Utilities.getTotalCurrent());
     	SmartDashboard.putNumber("Right Encoder Ticks: ", DriveTrain.getRightEncoderTicks());
+    	SmartDashboard.putNumber("Left Encoder Ticks: ", DriveTrain.getLeftEncoderTicks());
     }
     
     /**
