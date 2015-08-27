@@ -7,6 +7,8 @@ import org.usfirst.frc.team4536.robot.FileWrite;
  *
  */
 public class FileWriteCommand extends Command {
+	
+	String fileName = "C:/Users/Liam/My Documents/FileWriteTest.txt";
 
     public FileWriteCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -19,6 +21,16 @@ public class FileWriteCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+    	try {
+    		
+    		FileWrite data = new FileWrite(fileName, true);
+    		data.writeToFile("YOLO, it works buddy - I'm not your buddy guy - I'm not your guy pal");
+    	}
+    	catch (IOException){
+    		
+    		
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
