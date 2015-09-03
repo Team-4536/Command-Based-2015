@@ -2,20 +2,20 @@ package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-import java.io.IOException;
-
 import org.usfirst.frc.team4536.robot.Constants;
-import org.usfirst.frc.team4536.robot.FileWrite;
+import org.usfirst.frc.team4536.robot.FileRead;
+
+import java.io.IOException;
 
 /**
  *@author Liam
  *The following link was used as we were learning to write to and read from text documents.
  *{@link}http://www.homeandlearn.co.uk/java/write_to_textfile.html
- * Command for writing to text files
+ * Command for reading from text files
  */
-public class FileWriteCommand extends CommandBase {
-
-    public FileWriteCommand() {
+public class FileReadCommand extends CommandBase {
+	
+    public FileReadCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -27,15 +27,20 @@ public class FileWriteCommand extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	try {
-    		
-    		FileWrite data = new FileWrite(Constants.textFileName, true);
-    		data.writeToFile("YOLO, it works buddy! - I'm not your buddy, guy! - I'm not your guy, pal!");
-    	}
-    	catch (IOException e){
-    		
-    		System.out.println("Something is wrong");
-    	}
+        try {
+            FileRead file = new FileRead(Constants.textFileName);
+            String[] aryLines = file.openFile();
+            int i;
+            
+            for (i = 0; i < aryLines.length; i++) {
+              
+              System.out.println(aryLines[i]);
+            }
+          }
+          catch (IOException e) {
+            
+            System.out.println("I cannot read the file master programmer.");
+          }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -50,6 +55,5 @@ public class FileWriteCommand extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
