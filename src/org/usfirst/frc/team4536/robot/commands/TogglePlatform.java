@@ -15,7 +15,11 @@ public class TogglePlatform extends CommandBase {
 	}
 
 	protected void initialize() {
-		platform.flip();
+		
+		if(elevator.getCurrentHeight() > 8)
+			platform.flip();
+		else if (platform.isExtended())
+			platform.flip();
     }
 	
 	protected void execute() {
