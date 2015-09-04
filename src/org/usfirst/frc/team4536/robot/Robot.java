@@ -61,10 +61,10 @@ public class Robot extends IterativeRobot {
             compressorCommand.start();
         if(smartDashboardCommand != null) 
         	smartDashboardCommand.start();
-        if(fileWriteCommand != null)
-        	fileWriteCommand.start();
         if(fileReadCommand != null)
         	fileReadCommand.start();
+        if(fileWriteCommand != null)
+        	fileWriteCommand.start();
     }
 
     public void autonomousPeriodic() {
@@ -85,11 +85,10 @@ public class Robot extends IterativeRobot {
         	driveCommand.start();
         if(smartDashboardCommand != null) 
         	smartDashboardCommand.start();
-        if(fileWriteCommand != null)
-        	fileWriteCommand.start();
         if(fileReadCommand != null)
         	fileReadCommand.start();
-        	
+        if(fileWriteCommand != null)
+        	fileWriteCommand.start();
     }
 
     /**

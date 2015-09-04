@@ -34,5 +34,5 @@ public class Constants {
 	
    	/*---------------------------------------Text File Reading/Writing--------------------*/
    	
-   	public static final String textFileName = "C:/Users/Liam/My Documents/FileWriteTest.txt";
+   	public static final String textFileName = "C:\\Users\\Liam\\My Documents\\FileWriteTest.txt";
 }
