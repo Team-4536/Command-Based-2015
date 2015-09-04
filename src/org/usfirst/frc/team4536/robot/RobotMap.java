@@ -36,5 +36,10 @@ public class RobotMap {
     public static final int TOP_LIMIT_SWITCH =3;
     public static final int MIDDLE_LIMIT_SWITCH =1;
     public static final int BOTTOM_LIMIT_SWITCH =4;
+    
+   	/*---------------------------------------Text File Reading/Writing--------------------*/
+   	
+   	//public static final String textFileName = "C:\\Users\\Liam\\My Documents\\FileWriteTest.txt";
+   	public static final String textFileName = "C:\\Users\\Liam\\git\\Command-Based-2015\\testFile.txt";
 
 }

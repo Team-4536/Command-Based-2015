@@ -31,8 +31,4 @@ public class Constants {
    	//(Right side)
    	public static final int ENCODER_SLOT_A = 9;
    	public static final int ENCODER_SLOT_B = 8;
-	
-   	/*---------------------------------------Text File Reading/Writing--------------------*/
-   	
-   	public static final String textFileName = "C:\\Users\\Liam\\My Documents\\FileWriteTest.txt";
 }
