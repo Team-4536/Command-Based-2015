@@ -22,10 +22,6 @@ public class FileReadCommand extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
     	
         try {
             FileRead file = new FileRead(Constants.textFileName);
@@ -41,6 +37,10 @@ public class FileReadCommand extends CommandBase {
             
             System.out.println("I cannot read the file master programmer.");
           }
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
     }
 
     // Make this return true when this Command no longer needs to run execute()
