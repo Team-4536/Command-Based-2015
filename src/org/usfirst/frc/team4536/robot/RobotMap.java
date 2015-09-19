@@ -8,10 +8,20 @@ package org.usfirst.frc.team4536.robot;
 public class RobotMap {
 	
 	/*-------------------------------------Motor Channels------------------------------------*/	
-    public static final int LEFT_MOTOR = 1;
-    public static final int RIGHT_MOTOR = 0;
-
-    public static final int ELEVATOR_MOTOR = 2;
+    
+	/*-----Drive Train-----*/
+	
+		/*-----PWM-----*/
+		public static final int LEFT_MOTOR = 1;
+		public static final int RIGHT_MOTOR = 0;
+	
+	/*-----Elevator-----*/
+		
+		/*-----PWM-----*/
+		public static final int ELEVATOR_MOTOR = 2;
+    
+    	/*-----PDP-----*/
+		public static final int ELEVATOR_PDP = 2;
     
     /*-------------------------------------Platform Solenoid Channels------------------------------------*/	
     public static final int RIGHT_PLATFORM_SOLENOID_CHANNEL = 2;

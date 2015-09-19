@@ -17,6 +17,7 @@ public class Constants {
 	
    	public static final double ELEVATOR_PROPORTIONALITY_CONSTANT = .5; //Units of throttle/inch
    	public static final double TICKS_PER_INCHES = 247.7; //Converts encoder ticks to measurable inches
+   	public static final double PLATFORM_TOGGLE_HEIGHT_LIMIT = 8.4; // platform can't be toggled when the elevator is at this height in inches and below.
    	
    	public static final double TOP_LIMIT_SWITCH_HEIGHT = 48;
    	public static final double MIDDLE_LIMIT_SWITCH_HEIGHT = 8;

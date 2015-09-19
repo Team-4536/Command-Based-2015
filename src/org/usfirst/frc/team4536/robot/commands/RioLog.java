@@ -33,7 +33,11 @@ public class RioLog extends CommandBase {
     	
     	System.out.print(Utilities.getTime() + ","); //Time
     	System.out.print(Utilities.getCycleTime() + ","); //Cycle Time
-    	System.out.print(Utilities.getCurrent(1) + ","); //Motor Current
+    	System.out.print(Utilities.getCurrent(2) + ","); //Elevator Current
+    	System.out.print(elevator.getCurrentHeight() + ","); // Elevator Height
+    	System.out.print(elevator.topLimitSwitchValue() + ","); //Top Limit Switch Value
+    	System.out.print(elevator.bottomLimitSwitchValue() + ","); //Bottom Limit Switch Value
+    	System.out.print(elevator.middleLimitSwitchValue() + ","); //Middle Limit Switch Value
     	System.out.print(Utilities.getTotalCurrent() + ","); //Total Current
     	System.out.println("");
     }
