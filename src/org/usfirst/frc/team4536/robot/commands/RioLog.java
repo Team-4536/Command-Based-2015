@@ -23,6 +23,8 @@ public class RioLog extends CommandBase {
 	 * @author Liam
 	 */
     protected void initialize() {
+    	//TODO add label printouts here
+    	//System.out.print(arg0);
     }
 
     // Called repeatedly when this Command is scheduled to run
