@@ -190,9 +190,4 @@ public class Utilities {
 		
 		return powerDistributionPanel.getCurrent(slot);
 	}
-	
-	public static void writeToTextFile() {
-		
-		
-	}
 }
