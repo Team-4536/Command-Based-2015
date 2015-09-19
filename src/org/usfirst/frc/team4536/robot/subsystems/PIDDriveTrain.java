@@ -24,7 +24,9 @@ public class PIDDriveTrain extends PIDSubsystem {
 
     // Initialize your subsystem here
     public PIDDriveTrain(int leftTalonChannel, int rightTalonChannel, int gyroChannel) {
-    	super("PIDDrive", 0.01, 0, 0);
+    	super("PIDDrive", 0.015, 0, 0);
+    	
+    	this.setAbsoluteTolerance(3);
 		
 		leftTalon = new Talon(leftTalonChannel);
 		rightTalon = new Talon(rightTalonChannel);
@@ -49,8 +51,16 @@ public class PIDDriveTrain extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	rightTalon.set(output);
-    	leftTalon.set(output);
+    	/* if (!this.onTarget()){
+ 		 	rightTalon.set(output);
+		 	leftTalon.set(output);
+         }
+    	 else {
+    		 this.disable(); 
+    	 }*/
+    	 
+    	 rightTalon.set(output);
+		 leftTalon.set(output);
     }
     
     /**

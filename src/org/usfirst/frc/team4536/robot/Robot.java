@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.subsystems.*;
@@ -43,6 +44,8 @@ public class Robot extends IterativeRobot {
         smartDashboardCommand = new SmartDashboardCommand();
         
         Utilities.startTimer();
+        SmartDashboard.putData(Scheduler.getInstance());
+   
     }
 	
 	public void disabledPeriodic() {
@@ -73,8 +76,10 @@ public class Robot extends IterativeRobot {
         	Utilities.resetTimer();
         	autonomousCommand.cancel();
         }
-        if(driveCommand != null)
-        	driveCommand.start();
+//        if(driveCommand != null)
+//        	driveCommand.start();
+        if(tankDriveCommand != null)
+        	tankDriveCommand.start();
         if(smartDashboardCommand != null) 
         	smartDashboardCommand.start();
     }
@@ -95,6 +100,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putData(CommandBase.driveTrain);
+        SmartDashboard.putData(CommandBase.elevator);
     }
 
     /**
