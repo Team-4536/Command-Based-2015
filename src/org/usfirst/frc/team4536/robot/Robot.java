@@ -27,6 +27,8 @@ public class Robot extends IterativeRobot {
     Command tankDriveCommand;
     Command toggleCanbuglerCommand;
     Command smartDashboardCommand;
+    Command fileWriteCommand;
+    Command fileReadCommand;
 
     /**
      * This function is run when the robot is first started up and should be

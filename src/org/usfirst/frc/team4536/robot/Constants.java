@@ -23,11 +23,12 @@ public class Constants {
    	public static final double BOTTOM_LIMIT_SWITCH_HEIGHT = -0.5;
    	
    	/*---------------------------------------Power Distribution Panel----------------------*/
+   	
    	public static final int PDP_SLOTS = 16;
    	
    	/*---------------------------------------Encoder--------------------------------------*/
+   	
    	//(Right side)
    	public static final int ENCODER_SLOT_A = 9;
    	public static final int ENCODER_SLOT_B = 8;
-	
 }

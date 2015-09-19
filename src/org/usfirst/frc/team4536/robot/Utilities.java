@@ -5,7 +5,10 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Utilities {
 	
+	/*-----------------------------------------------------Objects---------------------------------------*/
+	
 	public static PowerDistributionPanel powerDistributionPanel = new PowerDistributionPanel();
+	public static Timer timer = new Timer();
 	
 	/*-----------------------------------------------------variables--------------------------------------------*/
 	
@@ -18,8 +21,6 @@ public class Utilities {
 	public static double finalThrottle = 0.0;
 	
 	/*------------------------------------------------------methods---------------------------------------------*/
-	
-	public static Timer timer = new Timer();
 	
 	/**
 	 * @ author Liam and Stepan
@@ -188,5 +189,10 @@ public class Utilities {
 	public static double getCurrent(int slot) {
 		
 		return powerDistributionPanel.getCurrent(slot);
+	}
+	
+	public static void writeToTextFile() {
+		
+		
 	}
 }
