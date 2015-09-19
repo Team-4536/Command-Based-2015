@@ -27,8 +27,7 @@ public class Robot extends IterativeRobot {
     Command tankDriveCommand;
     Command toggleCanbuglerCommand;
     Command smartDashboardCommand;
-    Command fileWriteCommand;
-    Command fileReadCommand;
+    Command rioLogger;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -43,6 +42,7 @@ public class Robot extends IterativeRobot {
         tankDriveCommand = new TankDrive();
         toggleCanbuglerCommand = new ToggleCanburgler();
         smartDashboardCommand = new SmartDashboardCommand();
+        rioLogger = new RioLog();
         
         Utilities.startTimer();
     }
@@ -79,6 +79,8 @@ public class Robot extends IterativeRobot {
         	driveCommand.start();
         if(smartDashboardCommand != null) 
         	smartDashboardCommand.start();
+        if(rioLogger != null)
+        	rioLogger.start();
     }
 
     /**
