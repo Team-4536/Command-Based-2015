@@ -24,20 +24,12 @@ public class TurnTo extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println("angle" + driveTrain.getPosition());
-//    	System.out.println("gyro angle" + driveTrain.gyroAngle());
-    	System.out.println("target" + driveTrain.onTarget());
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        
-        if (driveTrain.onTarget()){
-        	return true;
-        }
-        else
-        	return false;
+    	return driveTrain.onTarget();
     }
 
     // Called once after isFinished returns true

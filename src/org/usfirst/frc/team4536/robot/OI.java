@@ -23,9 +23,9 @@ public class OI {
 	
 	public static Button driveElevatorWithStickButton;
 	public static Button elevatorToHeight50Button;
-
-	public static Button turnTo30;
-	public static Button turnTo0;
+	
+	public static Button turnToGroup30;
+	public static Button turnToGroup0;
 	
 	public OI() {
 		//----------------initializations------------------
@@ -38,8 +38,8 @@ public class OI {
 		driveElevatorWithStickButton = new JoystickButton(secondaryStick, 6);
 		elevatorToHeight50Button = new JoystickButton(secondaryStick, 3);
 		
-		turnTo30 = new JoystickButton(mainStick, 8);
-		turnTo0 = new JoystickButton(mainStick, 7);
+		turnToGroup30 = new JoystickButton(mainStick, 9);
+		turnToGroup0 = new JoystickButton(mainStick, 10);
 		
 		
 		
@@ -50,9 +50,10 @@ public class OI {
 		platformToggleButton.whenPressed(new TogglePlatform());
 		
 		canburglerToggleButton.whenPressed(new ToggleCanburgler());
+
 		
-		turnTo30.whenPressed(new TurnTo(30));
-		turnTo0.whenPressed(new TurnTo(0));
+		turnToGroup30.whenPressed(new TurnToGroup(30));
+		turnToGroup0.whenPressed(new TurnToGroup(0));
 	}
 	
 

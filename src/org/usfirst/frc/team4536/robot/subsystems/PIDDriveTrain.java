@@ -51,13 +51,6 @@ public class PIDDriveTrain extends PIDSubsystem {
     protected void usePIDOutput(double output) {
         // Use output to drive your system, like a motor
         // e.g. yourMotor.set(output);
-    	/* if (!this.onTarget()){
- 		 	rightTalon.set(output);
-		 	leftTalon.set(output);
-         }
-    	 else {
-    		 this.disable(); 
-    	 }*/
     	 
     	 rightTalon.set(output);
 		 leftTalon.set(output);

@@ -78,8 +78,8 @@ public class Robot extends IterativeRobot {
         }
 //        if(driveCommand != null)
 //        	driveCommand.start();
-        if(tankDriveCommand != null)
-        	tankDriveCommand.start();
+        if(driveCommand != null)
+        	driveCommand.start();
         if(smartDashboardCommand != null) 
         	smartDashboardCommand.start();
     }

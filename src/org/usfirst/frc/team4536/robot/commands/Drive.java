@@ -48,6 +48,7 @@ public class Drive extends CommandBase {
     	turnThrottle = Utilities.accelLimit(turnThrottle, PIDDriveTrain.getPrevTurnThrottle(), Constants.TURN_FULL_SPEED_TIME);
     	
     	driveTrain.arcadeDrive(forwardThrottle, turnThrottle);
+    	
     }
     
     protected boolean isFinished() {
