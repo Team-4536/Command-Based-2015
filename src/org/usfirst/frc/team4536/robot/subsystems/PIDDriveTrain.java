@@ -21,6 +21,7 @@ public class PIDDriveTrain extends PIDSubsystem {
 	
 	Timer driveTimer;
 	Gyro gyro;
+	double angle;
 
     // Initialize your subsystem here
     public PIDDriveTrain(int leftTalonChannel, int rightTalonChannel, int gyroChannel) {
@@ -85,6 +86,10 @@ public class PIDDriveTrain extends PIDSubsystem {
     	
     	prevForwardThrottle = forwardThrottle;
     	prevTurnThrottle = turnThrottle;
+    }
+    
+    public void gyroReset(){
+    	this.gyro.reset();
     }
     
     public static double getPrevForwardThrottle() {

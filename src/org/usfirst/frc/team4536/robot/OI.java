@@ -45,7 +45,6 @@ public class OI {
 		
 		//-------------------actions------------------
 		driveElevatorWithStickButton.whenPressed(new DriveElevatorWithStick());
-		elevatorToHeight50Button.whenPressed(new DriveElevatorToHeight(50));
 
 		platformToggleButton.whenPressed(new TogglePlatform());
 		
