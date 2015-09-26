@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4536.robot.subsystems.PIDDriveTrain;
 import org.usfirst.frc.team4536.robot.Constants;
 import org.usfirst.frc.team4536.robot.OI;
 import org.usfirst.frc.team4536.robot.Robot;
@@ -22,8 +22,8 @@ public class Drive extends CommandBase {
 	 * @author Stepan and Liam
 	 */
 	protected void initialize() {
-		DriveTrain.prevForwardThrottle = 0.0;
-		DriveTrain.prevTurnThrottle = 0.0;
+		PIDDriveTrain.prevForwardThrottle = 0.0;
+		PIDDriveTrain.prevTurnThrottle = 0.0;
 		
 		forwardThrottle = 0;
 		turnThrottle = 0;
@@ -44,10 +44,11 @@ public class Drive extends CommandBase {
     	forwardThrottle = Utilities.speedCurve(forwardThrottle, Constants.FORWARD_SPEED_CURVE);
     	turnThrottle = Utilities.speedCurve(turnThrottle, Constants.TURN_SPEED_CURVE);
     	
-    	forwardThrottle = Utilities.accelLimit(forwardThrottle, DriveTrain.getPrevForwardThrottle(), Constants.FORWARD_FULL_SPEED_TIME);
-    	turnThrottle = Utilities.accelLimit(turnThrottle, DriveTrain.getPrevTurnThrottle(), Constants.TURN_FULL_SPEED_TIME);
+    	forwardThrottle = Utilities.accelLimit(forwardThrottle, PIDDriveTrain.getPrevForwardThrottle(), Constants.FORWARD_FULL_SPEED_TIME);
+    	turnThrottle = Utilities.accelLimit(turnThrottle, PIDDriveTrain.getPrevTurnThrottle(), Constants.TURN_FULL_SPEED_TIME);
     	
     	driveTrain.arcadeDrive(forwardThrottle, turnThrottle);
+    	
     }
     
     protected boolean isFinished() {

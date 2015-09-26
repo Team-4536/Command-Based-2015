@@ -2,9 +2,12 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * 
@@ -13,7 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 
 public abstract class CommandBase extends Command {
 	
-	public static DriveTrain driveTrain = new DriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
+	public static PIDDriveTrain driveTrain = new PIDDriveTrain(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR, RobotMap.GYRO);
 	public static CompressorSubsystem compSub = new CompressorSubsystem();
 	public static Elevator elevator = new Elevator(RobotMap.ELEVATOR_MOTOR,
 			RobotMap.ELEVATOR_ENCODER_A_CHANNEL,

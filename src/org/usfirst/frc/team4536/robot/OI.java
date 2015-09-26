@@ -23,6 +23,9 @@ public class OI {
 	public static Button driveElevatorWithStickButton;
 	public static Button elevatorToHeight50Button;
 	
+	public static Button turnToGroup30;
+	public static Button turnToGroup0;
+	
 	public OI() {
 		//----------------initializations------------------
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
@@ -31,13 +34,13 @@ public class OI {
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		canburglerToggleButton = new JoystickButton(mainStick, 3);
 
+
 		Button goToBottomOfFeederStationButton = new JoystickButton(secondaryStick, 2);
 		Button goToTopOfFeederStationButton = new JoystickButton(secondaryStick, 3);
 		Button goToScoringPlatformButton = new JoystickButton(secondaryStick, 4);
 		Button goToRecyclingContainerButton = new JoystickButton(secondaryStick, 5);
 		Button elevatorManualOverrideButton = new JoystickButton(secondaryStick, 6);
 		Button a = new JoystickButton(secondaryStick, 7);
-
 		
 		//-------------------actions------------------
 
@@ -51,6 +54,7 @@ public class OI {
 		goToRecyclingContainerButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_RECYCLING_CONTAINER, 1));
 		elevatorManualOverrideButton.whileHeld(new DriveElevatorWithStick());
 		elevatorManualOverrideButton.whenReleased(new HoldElevator());
+
 	}
 	
 

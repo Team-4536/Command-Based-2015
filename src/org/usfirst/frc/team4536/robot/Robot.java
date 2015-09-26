@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.subsystems.*;
 import org.usfirst.frc.team4536.robot.commands.*;
+import org.usfirst.frc.team4536.robot.commands.CommandBase;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,6 +25,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
+    Command autonomousCommand2;
     Command driveCommand;
     Command compressorCommand;
     Command tankDriveCommand;
@@ -40,6 +42,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
+        autonomousCommand2 = new RecyclingContainerToFeederStationAutonomous();
         driveCommand = new Drive();
         compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
@@ -48,7 +51,10 @@ public class Robot extends IterativeRobot {
         
         SmartDashboard.putData(Scheduler.getInstance());
         
+        
         Utilities.startTimer();
+        SmartDashboard.putData(Scheduler.getInstance());
+   
     }
 	
 	public void disabledPeriodic() {
@@ -63,6 +69,10 @@ public class Robot extends IterativeRobot {
             compressorCommand.start();
         if(smartDashboardCommand != null) 
         	smartDashboardCommand.start();
+
+        CommandBase.driveTrain.gyroReset();
+        autonomousCommand2.start();
+        
     }
 
     public void autonomousPeriodic() {
@@ -79,6 +89,8 @@ public class Robot extends IterativeRobot {
         	Utilities.resetTimer();
         	autonomousCommand.cancel();
         }
+//        if(driveCommand != null)
+//        	driveCommand.start();
         if(driveCommand != null)
         	driveCommand.start();
         if(smartDashboardCommand != null) 
@@ -107,6 +119,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        SmartDashboard.putData(CommandBase.driveTrain);
+        SmartDashboard.putData(CommandBase.elevator);
     }
 
     /**
