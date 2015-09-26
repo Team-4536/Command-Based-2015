@@ -2,11 +2,11 @@ package org.usfirst.frc.team4536.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import org.usfirst.frc.team4536.robot.commands.*;
+import org.usfirst.frc.team4536.robot.subsystems.*;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import org.usfirst.frc.team4536.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4536.robot.commands.DriveElevatorWithStick;
-import org.usfirst.frc.team4536.robot.commands.DriveElevatorToHeight;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -30,18 +30,27 @@ public class OI {
 		
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		canburglerToggleButton = new JoystickButton(mainStick, 3);
-		
-		driveElevatorWithStickButton = new JoystickButton(secondaryStick, 6);
-		elevatorToHeight50Button = new JoystickButton(secondaryStick, 3);
-		
+
+		Button goToBottomOfFeederStationButton = new JoystickButton(secondaryStick, 2);
+		Button goToTopOfFeederStationButton = new JoystickButton(secondaryStick, 3);
+		Button goToScoringPlatformButton = new JoystickButton(secondaryStick, 4);
+		Button goToRecyclingContainerButton = new JoystickButton(secondaryStick, 5);
+		Button elevatorManualOverrideButton = new JoystickButton(secondaryStick, 6);
+		Button a = new JoystickButton(secondaryStick, 7);
+
 		
 		//-------------------actions------------------
-		driveElevatorWithStickButton.whenPressed(new DriveElevatorWithStick());
-		elevatorToHeight50Button.whenPressed(new DriveElevatorToHeight(50));
 
 		platformToggleButton.whenPressed(new TogglePlatform());
 		
 		canburglerToggleButton.whenPressed(new ToggleCanburgler());
+		
+		goToBottomOfFeederStationButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_BOTTOM_OF_FEEDER_STATION, 1));
+		goToTopOfFeederStationButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_TOP_OF_FEEDER_STATION, 1));
+		goToScoringPlatformButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_SCORING_PLATFORM, .25));
+		goToRecyclingContainerButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_RECYCLING_CONTAINER, 1));
+		elevatorManualOverrideButton.whileHeld(new DriveElevatorWithStick());
+		elevatorManualOverrideButton.whenReleased(new HoldElevator());
 	}
 	
 
