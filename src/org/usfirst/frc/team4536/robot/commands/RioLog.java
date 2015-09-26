@@ -32,7 +32,14 @@ public class RioLog extends CommandBase {
 	 * @author Liam
 	 */
     protected void execute() {
+    	// Add titles for data here
+    	System.out.println("Time,CycleTime,ElevatorCurrent,"
+    			+ "ElevatorHeight,TopLimitSwitchValue,"
+    			+ "BottomLimitSwitchValue,MiddleLimitSwitchValue,"
+    			+ "TotalCurrent,SecondaryStickY,SecondaryStickX,"
+    			+ "MainStickY,MainStickX");
     	
+    	//Add printouts in CSV format for data here and remember to add a title above
     	System.out.print(Utilities.getTime() + ","); //Time
     	System.out.print(Utilities.getCycleTime() + ","); //Cycle Time
     	System.out.print(Utilities.getCurrent(2) + ","); //Elevator Current
