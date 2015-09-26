@@ -41,6 +41,10 @@ public class RioLog extends CommandBase {
     	System.out.print(elevator.bottomLimitSwitchValue() + ","); //Bottom Limit Switch Value
     	System.out.print(elevator.middleLimitSwitchValue() + ","); //Middle Limit Switch Value
     	System.out.print(Utilities.getTotalCurrent() + ","); //Total Current
+    	System.out.print(OI.secondaryStick.getY() + ","); // Secondary Stick Y
+    	System.out.print(OI.secondaryStick.getX() + ","); // Secondary Stick X
+    	System.out.print(OI.mainStick.getY() + ","); // Main Stick Y
+    	System.out.print(OI.mainStick.getX()); // Main Stick X
     	System.out.println("");
     }
 
