@@ -36,10 +36,10 @@ public class OI {
 		Button elevatorManualOverrideButton = new JoystickButton(secondaryStick, 6);
 		Button a = new JoystickButton(secondaryStick, 7);
 		
-		goToBottomOfFeederStationButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_BOTTOM_OF_FEEDER_STATION, 1));
-		goToTopOfFeederStationButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_TOP_OF_FEEDER_STATION, 1));
-		goToScoringPlatformButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_SCORING_PLATFORM, .25));
-		goToRecyclingContainerButton.whenPressed(new DriveElevatorToHeight(Constants.HEIGHT_FOR_RECYCLING_CONTAINER, 1));
+		goToBottomOfFeederStationButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_BOTTOM_OF_FEEDER_STATION, 1));
+		goToTopOfFeederStationButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_TOP_OF_FEEDER_STATION, 1));
+		goToScoringPlatformButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_SCORING_PLATFORM, .25));
+		goToRecyclingContainerButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_RECYCLING_CONTAINER, 1));
 		elevatorManualOverrideButton.whileHeld(new DriveElevatorWithStick());
 		elevatorManualOverrideButton.whenReleased(new HoldElevator());
 	

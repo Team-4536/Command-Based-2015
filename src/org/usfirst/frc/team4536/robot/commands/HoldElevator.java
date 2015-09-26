@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class HoldElevator extends CommandBase {
 	double holdingHeight;
-	boolean wasInterrupted = true;
 	
     public HoldElevator() {
         // Use requires() here to declare subsystem dependencies
@@ -16,6 +15,7 @@ public class HoldElevator extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	holdingHeight = elevator.getCurrentHeight();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -24,10 +24,6 @@ public class HoldElevator extends CommandBase {
     	System.out.println("holding" + holdingHeight);
     	elevator.update();
     	
-    	if (wasInterrupted){
-    		holdingHeight = elevator.getCurrentHeight();
-    		wasInterrupted = false;
-    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,6 +39,5 @@ public class HoldElevator extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	wasInterrupted = true;
     }
 }
