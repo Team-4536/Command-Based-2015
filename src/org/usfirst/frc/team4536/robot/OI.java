@@ -23,6 +23,8 @@ public class OI {
 	public static Button driveElevatorWithStickButton;
 	public static Button elevatorToHeight50Button;
 	public static Button elevatorToHeight20Button;
+	//TODO delete after testing
+	public static Button elevatorToHeight0Button;
 	
 	public OI() {
 		//----------------initializations------------------
@@ -37,6 +39,9 @@ public class OI {
 		
 		elevatorToHeight20Button = new JoystickButton(secondaryStick, 4);
 		
+		//TODO delete after testing
+		elevatorToHeight0Button = new JoystickButton(secondaryStick, 10);
+		
 		
 		//-------------------actions------------------
 		driveElevatorWithStickButton.whenPressed(new DriveElevatorWithStick());
@@ -46,6 +51,8 @@ public class OI {
 		
 		canburglerToggleButton.whenPressed(new ToggleCanburgler());
 		elevatorToHeight20Button.whenPressed(new DriveElevatorToHeight(20));
+		//TODO delete after testing
+		elevatorToHeight0Button.whenPressed(new DriveElevatorToHeight(0));
 	}
 	
 
