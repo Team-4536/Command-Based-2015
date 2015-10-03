@@ -14,7 +14,17 @@ public class RobotMap {
 		/*-----PWM-----*/
 		public static final int LEFT_MOTOR = 1;
 		public static final int RIGHT_MOTOR = 0;
-	
+		
+		/*-----PDP-----*/
+		public static final int [] DRIVE_TRAIN_LEFT_PDP = {14, 15};
+		public static final int [] DRIVE_TRAIN_RIGHT_PDP = {0, 1};
+		
+		//All PDP channels (left AND right motor PDP channels
+		public static final int [] DRIVE_TRAIN_PDP = {DRIVE_TRAIN_LEFT_PDP[0],
+													DRIVE_TRAIN_LEFT_PDP[1],
+													DRIVE_TRAIN_RIGHT_PDP[0],
+													DRIVE_TRAIN_RIGHT_PDP[1]};
+		
 	/*-----Elevator-----*/
 		
 		/*-----PWM-----*/
