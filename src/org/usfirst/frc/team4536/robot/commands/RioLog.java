@@ -3,12 +3,15 @@ package org.usfirst.frc.team4536.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4536.robot.*;
+import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 
 /**
  * @author Liam
  * This Class is used to handle all printouts from the roboRIO. To be able to graph information in excel we enter printouts in CSV format. We then select all and copy and paste that data into a text document and save it as a CSV file. You can then open it in excel and make a graph.
  */
 public class RioLog extends CommandBase {
+	
+	int elevatorBottomLimitSwitch, elevatorMiddleLimitSwitch, elevatorTopLimitSwitch;
 
 	/**
 	 * @author Liam
@@ -23,8 +26,15 @@ public class RioLog extends CommandBase {
 	 * @author Liam
 	 */
     protected void initialize() {
-    	//TODO add label printouts here
-    	//System.out.print(arg0);
+    	
+    	// Add titles for data here
+    	System.out.println("Time,CycleTime,ElevatorCurrent,"
+    			+ "ElevatorHeight,TopLimitSwitchValue,"
+    			+ "BottomLimitSwitchValue,MiddleLimitSwitchValue,"
+    			+ "TotalCurrent,SecondaryStickY,SecondaryStickX,"
+    			+ "MainStickY,MainStickX,LeftDriveTrainCurrent,"
+    			+ "RightDriveTrainCurrent, DriveTrainCurrent");
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -32,26 +42,23 @@ public class RioLog extends CommandBase {
 	 * @author Liam
 	 */
     protected void execute() {
-    	// Add titles for data here
-    	System.out.println("Time,CycleTime,ElevatorCurrent,"
-    			+ "ElevatorHeight,TopLimitSwitchValue,"
-    			+ "BottomLimitSwitchValue,MiddleLimitSwitchValue,"
-    			+ "TotalCurrent,SecondaryStickY,SecondaryStickX,"
-    			+ "MainStickY,MainStickX");
     	
     	//Add printouts in CSV format for data here and remember to add a title above
     	System.out.print(Utilities.getTime() + ","); //Time
     	System.out.print(Utilities.getCycleTime() + ","); //Cycle Time
-    	System.out.print(Utilities.getCurrent(2) + ","); //Elevator Current
+    	System.out.print(elevator.getCurrent() + ","); //Elevator Current
     	System.out.print(elevator.getCurrentHeight() + ","); // Elevator Height
-    	System.out.print(elevator.topLimitSwitchValue() + ","); //Top Limit Switch Value
-    	System.out.print(elevator.bottomLimitSwitchValue() + ","); //Bottom Limit Switch Value
-    	System.out.print(elevator.middleLimitSwitchValue() + ","); //Middle Limit Switch Value
+    	System.out.print(elevator.topLimitSwitchValue() ? 1: 0 + ","); //Top Limit Switch Value
+    	System.out.print(elevator.bottomLimitSwitchValue() ? 1: 0 + ","); //Bottom Limit Switch Value
+    	System.out.print(elevator.middleLimitSwitchValue() ? 1: 0 + ","); //Middle Limit Switch Value
     	System.out.print(Utilities.getTotalCurrent() + ","); //Total Current
     	System.out.print(OI.secondaryStick.getY() + ","); // Secondary Stick Y
     	System.out.print(OI.secondaryStick.getX() + ","); // Secondary Stick X
     	System.out.print(OI.mainStick.getY() + ","); // Main Stick Y
     	System.out.print(OI.mainStick.getX()); // Main Stick X
+    	System.out.print(DriveTrain.getLeftCurrent() + ","); // Left Drive Train Current
+    	System.out.print(DriveTrain.getRightCurrent() + ","); // Right Drive Train Current
+    	System.out.print(DriveTrain.getCurrent() + ","); // Drive Train Current
     	System.out.println("");
     }
 
