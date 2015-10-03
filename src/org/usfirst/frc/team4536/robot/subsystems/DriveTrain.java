@@ -92,4 +92,33 @@ public class DriveTrain extends Subsystem {
     	
     	return prevRightThrottle;
     }
+    
+    /**
+     * @author Liam
+     * @return Returns the current of the left side of the drive train
+     */
+    public static double getLeftCurrent() {
+    	
+    	return (Utilities.getCurrent(RobotMap.DRIVE_TRAIN_LEFT_PDP[0])
+    			+ Utilities.getCurrent(RobotMap.DRIVE_TRAIN_LEFT_PDP[1]));
+    }
+    
+    /**
+     * @author Liam
+     * @return Returns the current of the right side of the robot
+     */
+    public static double getRightCurrent() {
+    	
+    	return (Utilities.getCurrent(RobotMap.DRIVE_TRAIN_RIGHT_PDP[0])
+    			+ Utilities.getCurrent(RobotMap.DRIVE_TRAIN_RIGHT_PDP[1]));
+    }
+    
+    /**
+     * @author Liam
+     * @return Returns the current of the whole drive train subsystem
+     */
+    public static double getCurrent() {
+    	
+    	return getRightCurrent() + getLeftCurrent();
+    }
 }
