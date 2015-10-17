@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
 import org.usfirst.frc.team4536.robot.Utilities;
 import org.usfirst.frc.team4536.robot.subsystems.*;
@@ -25,7 +26,8 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
-    Command autonomousCommand2;
+    Command rightFeederStationAuto;
+    Command leftFeederStationAuto;
     Command driveCommand;
     Command compressorCommand;
     Command tankDriveCommand;
@@ -33,6 +35,7 @@ public class Robot extends IterativeRobot {
     Command smartDashboardCommand;
     Command fileWriteCommand;
     Command fileReadCommand;
+    SendableChooser autoChooser;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -42,7 +45,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
         autonomousCommand = new ExampleCommand();
-        autonomousCommand2 = new RecyclingContainerToFeederStationAutonomous();
+        rightFeederStationAuto = new RightFeederStationAutonomous();
+        leftFeederStationAuto = new LeftFeederStationAutonomous();
         driveCommand = new Drive();
         compressorCommand = new RunCompressor();
         tankDriveCommand = new TankDrive();
@@ -54,6 +58,13 @@ public class Robot extends IterativeRobot {
         
         Utilities.startTimer();
         SmartDashboard.putData(Scheduler.getInstance());
+        
+        autoChooser = new SendableChooser();
+        autoChooser.addDefault("Do Nothing", 0);
+        autoChooser.addObject("Left Feeder Station", 1);
+        autoChooser.addObject("Right Feeder Station", 2);
+        SmartDashboard.putData("autoChooser", autoChooser);
+        	
    
     }
 	
@@ -71,12 +82,22 @@ public class Robot extends IterativeRobot {
         	smartDashboardCommand.start();
 
         CommandBase.driveTrain.gyroReset();
-        autonomousCommand2.start();
         
     }
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
+        switch ((int) autoChooser.getSelected().hashCode()){
+        		case 0: CommandBase.driveTrain.arcadeDrive(0, 0);
+        				break;
+        		case 1: rightFeederStationAuto.start();
+        				break;
+        		case 2: leftFeederStationAuto.start();
+        				break;
+        		default: CommandBase.driveTrain.arcadeDrive(0, 0);
+        				break;
+        }
     }
 
     public void teleopInit() {
@@ -101,6 +122,8 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(CommandBase.driveTrain);
         SmartDashboard.putData(CommandBase.elevator);
         SmartDashboard.putData(CommandBase.platform);
+        
+        CommandBase.driveTrain.disable();
     }
 
     /**

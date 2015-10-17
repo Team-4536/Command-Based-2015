@@ -1,21 +1,19 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team4536.robot.commands.CommandBase;
 
 /**
  *
  */
-public class RecyclingContainerToFeederStationAutonomous extends CommandGroup {
+public class LeftFeederStationAutonomous extends CommandGroup {
     
-    public  RecyclingContainerToFeederStationAutonomous() {
+    public  LeftFeederStationAutonomous() {    	
     	
-
+    	
     	CommandBase.driveTrain.setOutputRange(-0.2, 0.2);
     	
     	addSequential(new DriveElevatorToHeight(48, .75));
-    	addSequential(new TurnToGroup(-45));
-    	
+    	addSequential(new TurnToGroup(45));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
