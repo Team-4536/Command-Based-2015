@@ -14,45 +14,57 @@ import org.usfirst.frc.team4536.robot.commands.DriveElevatorToHeight;
  */
 public class OI {
 	
+	//Joysticks
 	public static Joystick mainStick;
 	public static Joystick secondaryStick;
 	
+	//Pneumatics
 	public static Button platformToggleButton;
 	public static Button canburglerToggleButton;
 	
+	//Elevator
 	public static Button driveElevatorWithStickButton;
 	public static Button elevatorToHeight50Button;
 	public static Button elevatorToHeight20Button;
-	//TODO delete after testing
 	public static Button elevatorToHeight0Button;
+	public static Button driveAt1;
+	public static Button driveAt2;
+	public static Button driveAt3;
+	public static Button driveAt4;
+	public static Button driveAt5;
 	
 	public OI() {
-		//----------------initializations------------------
+		
+		/*----------------initializations------------------*/
+		
+		/*-----Joysticks-----*/
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
 		secondaryStick = new Joystick(RobotMap.SECONDARY_STICK);
 		
+		/*-----Pneumatics-----*/
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		canburglerToggleButton = new JoystickButton(mainStick, 3);
 		
+		/*-----Elevator-----*/
 		driveElevatorWithStickButton = new JoystickButton(secondaryStick, 6);
 		elevatorToHeight50Button = new JoystickButton(secondaryStick, 3);
-		
 		elevatorToHeight20Button = new JoystickButton(secondaryStick, 4);
-		
-		//TODO delete after testing
 		elevatorToHeight0Button = new JoystickButton(secondaryStick, 10);
+		driveAt1 = new JoystickButton(mainStick, 7);
 		
 		
-		//-------------------actions------------------
+		/*-------------------actions------------------*/
+		
+		/*-----Elevator-----*/
 		driveElevatorWithStickButton.whenPressed(new DriveElevatorWithStick());
 		elevatorToHeight50Button.whenPressed(new DriveElevatorToHeight(50));
-
-		platformToggleButton.whenPressed(new TogglePlatform());
-		
-		canburglerToggleButton.whenPressed(new ToggleCanburgler());
 		elevatorToHeight20Button.whenPressed(new DriveElevatorToHeight(20));
-		//TODO delete after testing
 		elevatorToHeight0Button.whenPressed(new DriveElevatorToHeight(0));
+		driveAt1.whenPressed(new DriveAtVelocity(0.5));
+		
+		/*-----Pneumatics-----*/
+		platformToggleButton.whenPressed(new TogglePlatform());
+		canburglerToggleButton.whenPressed(new ToggleCanburgler());
 	}
 	
 
