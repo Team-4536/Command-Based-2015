@@ -37,6 +37,7 @@ public class Robot extends IterativeRobot {
     Command fileReadCommand;
     SendableChooser autoChooser;
 
+
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -65,7 +66,6 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Right Feeder Station", 2);
         SmartDashboard.putData("autoChooser", autoChooser);
         	
-   
     }
 	
 	public void disabledPeriodic() {
@@ -91,13 +91,14 @@ public class Robot extends IterativeRobot {
         switch ((int) autoChooser.getSelected().hashCode()){
         		case 0: CommandBase.driveTrain.arcadeDrive(0, 0);
         				break;
-        		case 1: rightFeederStationAuto.start();
+        		case 1: leftFeederStationAuto.start();
         				break;
-        		case 2: leftFeederStationAuto.start();
+        		case 2: rightFeederStationAuto.start();
         				break;
         		default: CommandBase.driveTrain.arcadeDrive(0, 0);
         				break;
         }
+        
     }
 
     public void teleopInit() {
@@ -116,6 +117,8 @@ public class Robot extends IterativeRobot {
         	driveCommand.start();
         if(smartDashboardCommand != null) 
         	smartDashboardCommand.start();
+        if(compressorCommand != null)
+            compressorCommand.start();
         
         SmartDashboard.putData(CommandBase.canburgler);
         SmartDashboard.putData(CommandBase.compSub);
@@ -123,7 +126,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(CommandBase.elevator);
         SmartDashboard.putData(CommandBase.platform);
         
-        CommandBase.driveTrain.disable();
+        
     }
 
     /**
@@ -144,6 +147,8 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         SmartDashboard.putData(CommandBase.driveTrain);
         SmartDashboard.putData(CommandBase.elevator);
+        SmartDashboard.putNumber("gyro angle", CommandBase.driveTrain.gyroAngle());       
+       
     }
 
     /**

@@ -29,7 +29,7 @@ public class TurnTo extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return driveTrain.onTarget();
+    	return (driveTrain.onTarget() && (driveTrain.gyroAngleRate() < Math.abs(1)));
     }
 
     // Called once after isFinished returns true
@@ -40,5 +40,6 @@ public class TurnTo extends CommandBase {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	this.end();
     }
 }

@@ -3,6 +3,7 @@ package org.usfirst.frc.team4536.robot.subsystems;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Gyro;
 
 /**
@@ -22,12 +23,12 @@ public class PIDDriveTrain extends PIDSubsystem {
 	Timer driveTimer;
 	Gyro gyro;
 	double angle;
-
+    
     // Initialize your subsystem here
-    public PIDDriveTrain(int leftTalonChannel, int rightTalonChannel, int gyroChannel) {
-    	super("PIDDrive", 0.015, 0, 0);
+    public PIDDriveTrain(int leftTalonChannel, int rightTalonChannel, int gyroChannel) {   	
+    	super("PIDDrive", 1 , 0, 0);
     	
-    	this.setAbsoluteTolerance(3);
+    	this.setAbsoluteTolerance(1);
 		
 		leftTalon = new Talon(leftTalonChannel);
 		rightTalon = new Talon(rightTalonChannel);
@@ -116,6 +117,15 @@ public class PIDDriveTrain extends PIDSubsystem {
     	
     	return gyro.getAngle();
     	
+    }
+    
+    public double gyroAngleRate(){
+    	return gyro.getRate();
+    }
+    
+    public void setProportionality(double proportionalValue) {
+    	
+    	this.getPIDController().setPID(proportionalValue, 0, 0);
     }
 
 }
