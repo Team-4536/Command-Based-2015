@@ -12,6 +12,8 @@ import org.usfirst.frc.team4536.robot.subsystems.DriveTrain;
 public class RioLog extends CommandBase {
 	
 	int elevatorBottomLimitSwitch, elevatorMiddleLimitSwitch, elevatorTopLimitSwitch;
+	
+	double prevHeight, height;
 
 	/**
 	 * @author Liam
@@ -27,13 +29,17 @@ public class RioLog extends CommandBase {
 	 */
     protected void initialize() {
     	
+    	prevHeight = 0;
+    	height = 0;
+    	
     	// Add titles for data here
     	System.out.println("Time,CycleTime,ElevatorCurrent,"
     			+ "ElevatorHeight,TopLimitSwitchValue,"
     			+ "BottomLimitSwitchValue,MiddleLimitSwitchValue,"
     			+ "TotalCurrent,SecondaryStickY,SecondaryStickX,"
     			+ "MainStickY,MainStickX,LeftDriveTrainCurrent,"
-    			+ "RightDriveTrainCurrent, DriveTrainCurrent");
+    			+ "RightDriveTrainCurrent,DriveTrainCurrent,"
+    			+ "Elevator Velocity");
     	
     }
 
@@ -42,6 +48,8 @@ public class RioLog extends CommandBase {
 	 * @author Liam
 	 */
     protected void execute() {
+    	
+    	height = elevator.getCurrentHeight();
     	
     	//Add printouts in CSV format for data here and remember to add a title above
     	System.out.print(Utilities.getTime() + ","); //Time
@@ -59,7 +67,10 @@ public class RioLog extends CommandBase {
     	System.out.print(DriveTrain.getLeftCurrent() + ","); // Left Drive Train Current
     	System.out.print(DriveTrain.getRightCurrent() + ","); // Right Drive Train Current
     	System.out.print(DriveTrain.getCurrent() + ","); // Drive Train Current
+    	System.out.print((height-prevHeight)/Utilities.getCycleTime() + ","); //Velocity
     	System.out.println("");
+    	
+    	prevHeight = height;
     }
 
     // Make this return true when this Command no longer needs to run execute()
