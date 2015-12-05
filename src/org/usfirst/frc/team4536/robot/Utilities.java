@@ -144,6 +144,7 @@ public class Utilities {
 	/**
 	 * @author Liam
 	 * @return The cycle time of our code in seconds.
+	 * The cycle time for our robot is typically around 20 ms (miliseconds).
 	 */
 	public static double getCycleTime() {
 		
@@ -163,6 +164,7 @@ public class Utilities {
 		
 		throttleDiff = throttle - prevThrottle;
 
+		//Average Cycle Time is typially 20 ms (miliseconds)
 		accelerationLimit = getCycleTime() / fullSpeedTime;
 
 		
@@ -176,7 +178,7 @@ public class Utilities {
 	
 	/**
 	 * @author Liam
-	 * @return The total current drawn from the power distribution board from ALL robot systems.
+	 * @return The total current drawn from the power distribution board from all robot systems.
 	 */
 	public static double getTotalCurrent() {
 		
@@ -184,7 +186,9 @@ public class Utilities {
 	}
 	
 	/**
-	 * 
+	 * @author Liam
+	 * @param the slot on the power distribution panel you want to know the current of
+	 * @return Returns the current of a slot on the power distribution panel
 	 */
 	public static double getCurrent(int slot) {
 		

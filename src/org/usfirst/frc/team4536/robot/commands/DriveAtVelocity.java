@@ -27,6 +27,8 @@ public class DriveAtVelocity extends CommandBase {
     protected void execute() {
     	
     	elevator.drive(velocity);
+    	
+    	elevator.update();
     }
 
     // Make this return true when this Command no longer needs to run execute()
