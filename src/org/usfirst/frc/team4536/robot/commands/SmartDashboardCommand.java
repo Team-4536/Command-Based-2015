@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team4536.robot.RobotMap;
 import org.usfirst.frc.team4536.robot.Utilities;
 
@@ -30,9 +29,12 @@ public class SmartDashboardCommand extends CommandBase {
     	SmartDashboard.putNumber("Elevator Current", Utilities.getCurrent(RobotMap.ELEVATOR_PDP));
     	SmartDashboard.putNumber("Total Current", Utilities.getTotalCurrent());
     	SmartDashboard.putNumber("Elevator Height", elevator.getCurrentHeight());
+    	SmartDashboard.putNumber("Previous Elevator Height", elevator.getPrevHeight());
     	SmartDashboard.putBoolean("Top Limit Switch", elevator.topLimitSwitchValue());
     	SmartDashboard.putBoolean("Middle Limit Switch", elevator.middleLimitSwitchValue());
     	SmartDashboard.putBoolean("Bottom Limit Switch", elevator.bottomLimitSwitchValue());
+    	SmartDashboard.putNumber("Change in Elevator Height", elevator.getChangeHeight());
+    	SmartDashboard.putNumber("Elevator Velocity", elevator.getChangeHeight()/Utilities.getCycleTime());
     }
     
     /**

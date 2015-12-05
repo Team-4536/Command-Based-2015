@@ -26,6 +26,7 @@ public class Elevator extends Subsystem {
 	double setHeight;
 	double currentHeight;
 	double correction;
+	double prevHeight;
 	
 	
 	public Elevator (int jaguarChannel, 
@@ -107,6 +108,8 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void update(){
+		
+		prevHeight = currentHeight;
 	 
 		currentHeight = correction + elevatorEncoder.get()/Constants.TICKS_PER_INCHES;
 		
@@ -134,6 +137,16 @@ public class Elevator extends Subsystem {
 	public double getCurrentHeight(){
 		
 		return currentHeight;
+	}
+	
+	public double getPrevHeight() {
+		
+		return prevHeight;
+	}
+	
+	public double getChangeHeight() {
+		
+		return (currentHeight-prevHeight);
 	}
 	
 	public double getCurrent() {
