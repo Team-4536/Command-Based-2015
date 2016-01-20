@@ -4,7 +4,8 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Encoder;
 
 /**
  *
@@ -21,18 +22,21 @@ public class PIDDriveTrain extends PIDSubsystem {
 	Talon rightTalon;
 	
 	Timer driveTimer;
-	Gyro gyro;
+	AnalogGyro gyro;
+	Encoder encoder;
 	double angle;
     
     // Initialize your subsystem here
-    public PIDDriveTrain(int leftTalonChannel, int rightTalonChannel, int gyroChannel) {   	
+    public PIDDriveTrain(int leftTalonChannel, int rightTalonChannel, int gyroChannel,
+    						int motorEncoderAChannel, int motorEncoderBChannel) {   	
     	super("PIDDrive", 1 , 0, 0);
     	
     	this.setAbsoluteTolerance(1);
 		
 		leftTalon = new Talon(leftTalonChannel);
 		rightTalon = new Talon(rightTalonChannel);
-		gyro = new Gyro(gyroChannel);
+		gyro = new AnalogGyro(gyroChannel);
+		encoder = new Encoder(motorEncoderAChannel, motorEncoderBChannel);
 		
     	leftTalon.set(0.0);
     	rightTalon.set(0.0);
@@ -126,6 +130,18 @@ public class PIDDriveTrain extends PIDSubsystem {
     public void setProportionality(double proportionalValue) {
     	
     	this.getPIDController().setPID(proportionalValue, 0, 0);
+    }
+    
+    public void encoderReset(){
+    	this.encoder.reset();
+    }
+    
+    public double getDistance(){
+    	return this.encoder.getDistance();
+    }
+    
+    public double getEncoderRate(){
+    	return this.encoder.getRate();
     }
 
 }

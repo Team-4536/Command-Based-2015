@@ -35,8 +35,6 @@ public class Constants {
    	
    	/*---------------------------------------Encoder--------------------------------------*/
    	
-   	//(Right side)
-   	public static final int ENCODER_SLOT_A = 9;
-   	public static final int ENCODER_SLOT_B = 8;
+   	public static final double MOTOR_TICKS_PER_INCHES = 1;
 }
 
