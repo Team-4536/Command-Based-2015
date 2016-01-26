@@ -6,7 +6,7 @@ import org.usfirst.frc.team4536.robot.commands.*;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Talon;
 
 public class DriveTrain extends Subsystem {
