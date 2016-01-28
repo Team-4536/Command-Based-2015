@@ -9,6 +9,7 @@ public class Constants {
 	public static final double TURN_SPEED_CURVE = 2;
 	public static final double FORWARD_FULL_SPEED_TIME = 2.0;
 	public static final double TURN_FULL_SPEED_TIME = 2.0;
+	public static final double DRIVE_TRAIN_MAX_VELOCITY = 4.1;
 	
 	/*---------------------------------------Joystick-----------------------------------*/
 	
@@ -35,6 +36,6 @@ public class Constants {
    	
    	/*---------------------------------------Encoder--------------------------------------*/
    	
-   	public static final double MOTOR_TICKS_PER_INCHES = 1;
+   	public static final double MOTOR_TICKS_PER_INCHES = 19;
 }
 

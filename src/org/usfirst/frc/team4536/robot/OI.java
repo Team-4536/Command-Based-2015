@@ -26,6 +26,8 @@ public class OI {
 	public static Button turnToGroup30;
 	public static Button turnToGroup0;
 	
+	public static Button driveTangleTest;
+	
 	public OI() {
 		//----------------initializations------------------
 		mainStick = new Joystick(RobotMap.MAIN_STICK);
@@ -33,6 +35,7 @@ public class OI {
 		
 		platformToggleButton = new JoystickButton(mainStick, 2);
 		canburglerToggleButton = new JoystickButton(mainStick, 3);
+		driveTangleTest = new JoystickButton(mainStick, 11);
 
 
 		Button goToBottomOfFeederStationButton = new JoystickButton(secondaryStick, 2);
@@ -54,7 +57,8 @@ public class OI {
 		goToRecyclingContainerButton.whenPressed(new GoToHeightAndHold(Constants.HEIGHT_FOR_RECYCLING_CONTAINER, 1));
 		elevatorManualOverrideButton.whileHeld(new DriveElevatorWithStick());
 		elevatorManualOverrideButton.whenReleased(new HoldElevator());
-
+		driveTangleTest.whenPressed(new DriveUglyRectangleWithEncoder (5, 1));
+		
 	}
 	
 

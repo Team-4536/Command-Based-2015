@@ -41,14 +41,18 @@ public class Drive extends CommandBase {
     	forwardThrottle = Utilities.deadZone(-OI.mainStick.getY(), Constants.DEAD_ZONE);
     	turnThrottle = Utilities.deadZone(OI.mainStick.getX(), Constants.DEAD_ZONE);
     	
-    	forwardThrottle = Utilities.speedCurve(forwardThrottle, Constants.FORWARD_SPEED_CURVE);
+    	/*forwardThrottle = Utilities.speedCurve(forwardThrottle, Constants.FORWARD_SPEED_CURVE);
     	turnThrottle = Utilities.speedCurve(turnThrottle, Constants.TURN_SPEED_CURVE);
     	
     	forwardThrottle = Utilities.accelLimit(forwardThrottle, PIDDriveTrain.getPrevForwardThrottle(), Constants.FORWARD_FULL_SPEED_TIME);
-    	turnThrottle = Utilities.accelLimit(turnThrottle, PIDDriveTrain.getPrevTurnThrottle(), Constants.TURN_FULL_SPEED_TIME);
+    	turnThrottle = Utilities.accelLimit(turnThrottle, PIDDriveTrain.getPrevTurnThrottle(), Constants.TURN_FULL_SPEED_TIME);*/
     	
     	driveTrain.arcadeDrive(forwardThrottle, turnThrottle);
     	
+    	
+    		System.out.println(driveTrain.getEncoderRate());
+    	
+  
     }
     
     protected boolean isFinished() {

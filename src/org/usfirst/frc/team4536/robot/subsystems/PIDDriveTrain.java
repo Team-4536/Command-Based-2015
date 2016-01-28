@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4536.robot.subsystems;
 
+import org.usfirst.frc.team4536.robot.Constants;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -137,11 +139,13 @@ public class PIDDriveTrain extends PIDSubsystem {
     }
     
     public double getDistance(){
-    	return this.encoder.getDistance();
+    	//returns inches
+    	return (this.encoder.getDistance()/Constants.MOTOR_TICKS_PER_INCHES);
     }
     
     public double getEncoderRate(){
-    	return this.encoder.getRate();
+    	//returns inches per second
+    	return this.encoder.getRate()/Constants.MOTOR_TICKS_PER_INCHES;
     }
 
 }

@@ -88,6 +88,7 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         
+                
         switch ((int) autoChooser.getSelected().hashCode()){
         		case 0: CommandBase.driveTrain.arcadeDrive(0, 0);
         				break;

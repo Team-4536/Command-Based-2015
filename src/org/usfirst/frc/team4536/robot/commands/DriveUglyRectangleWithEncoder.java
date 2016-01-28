@@ -1,54 +1,61 @@
 package org.usfirst.frc.team4536.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-
-import java.lang.Math;
-
-import org.usfirst.frc.team4536.robot.Utilities;
+import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team4536.robot.UglyRectangle;
 
 /**
  *
  */
-public class DriveToDistance extends CommandBase {
+public class DriveUglyRectangleWithEncoder extends CommandBase {
 	
-	double desiredDistance = 0;
-	double maxSpeed;
-	double maxAccel;
+	Timer timer = new Timer();
+	double time;
+	double desiredDistance;
+	double maxVelocity;
+	UglyRectangle tangle;
 
-    public DriveToDistance(double distance, double maxSpeed, double maxAccel) {
+    public DriveUglyRectangleWithEncoder(double distance, double maxVelocity) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(driveTrain);
+    	tangle = new UglyRectangle(distance, maxVelocity);
     	this.desiredDistance = distance;
-    	this.maxSpeed = maxSpeed;
-    	this.maxAccel = maxAccel;
+    	this.maxVelocity = maxVelocity;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	timer.reset();
+    	timer.start();
     	driveTrain.encoderReset();
     	driveTrain.gyroReset();
-    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	driveTrain.arcadeDrive(maxSpeed*Utilities.limit(desiredDistance - driveTrain.getDistance()),
-    							-(maxSpeed/6)*driveTrain.gyroAngle());
-    	System.out.println(driveTrain.getDistance());
-    	System.out.println(driveTrain.gyroAngle());
+    	
+    	time = timer.get();
+    	
+    	driveTrain.arcadeDrive(tangle.throttle(time) + 
+    			0.75*(tangle.idealDistance(time) - driveTrain.getDistance()/12),
+    			-(maxVelocity/24.6)*driveTrain.gyroAngle());
+    	
+    	System.out.println(driveTrain.getDistance()/12);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Math.abs(desiredDistance - driveTrain.getDistance()) < 0.5 
-    				&& driveTrain.getEncoderRate() < 0.5
-    				&& Math.abs(driveTrain.gyroAngle()) < 1 
-    				&& (driveTrain.gyroAngleRate() < Math.abs(1))){
+    	if(Math.abs(driveTrain.getDistance() - desiredDistance) < 0.04
+    			//in feet
+    		&& Math.abs(driveTrain.getEncoderRate()) < 0.5)
+    			//in inches
+    	{
     		return true;
     	}
-    	
-    	else return false;
+    	else
+    		return false;
     }
 
     // Called once after isFinished returns true
