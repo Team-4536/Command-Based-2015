@@ -29,9 +29,7 @@ public class DriveUglyRectangle extends CommandBase {
     protected void execute() {
     	
     	driveTrain.arcadeDrive(tangle.throttle(timer.get()), 0);
-    	
-   	System.out.println(tangle.idealDistance(timer.get()));
-//    	System.out.println("rate " + tangle.idealRate(timer.get()));
+    	//Gives the driveTrain the desired speed for the amount of time needed to achieve the distance
     	
     }
 

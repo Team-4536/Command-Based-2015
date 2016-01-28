@@ -36,6 +36,6 @@ public class Constants {
    	
    	/*---------------------------------------Encoder--------------------------------------*/
    	
-   	public static final double MOTOR_TICKS_PER_INCHES = 19;
+   	public static final double MOTOR_TICKS_PER_INCHES = 19; //Converts encoder ticks to measurable inches
 }
 

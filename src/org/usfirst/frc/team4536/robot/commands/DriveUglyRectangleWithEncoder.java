@@ -40,17 +40,19 @@ public class DriveUglyRectangleWithEncoder extends CommandBase {
     	driveTrain.arcadeDrive(tangle.throttle(time) + 
     			0.75*(tangle.idealDistance(time) - driveTrain.getDistance()/12),
     			-(maxVelocity/24.6)*driveTrain.gyroAngle());
+    	//Ask Caleb or Mairead on the implementation of feedforward+feedback
     	
     	System.out.println(driveTrain.getDistance()/12);
+    	//Since getDistance is in feet, you have to divide by 12 to inches
     	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(Math.abs(driveTrain.getDistance() - desiredDistance) < 0.04
-    			//in feet
+    			//in feet, true if the robot is within half of an inch away from the desired distance
     		&& Math.abs(driveTrain.getEncoderRate()) < 0.5)
-    			//in inches
+    			//in inches, true in the robot is moving at a steep of less than half an inch
     	{
     		return true;
     	}

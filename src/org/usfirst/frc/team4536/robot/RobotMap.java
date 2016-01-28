@@ -38,6 +38,7 @@ public class RobotMap {
     public static final int ELEVATOR_ENCODER_A_CHANNEL = 5;
     public static final int ELEVATOR_ENCODER_B_CHANNEL = 6;
     public static final int GYRO = 0;
+    //This is only for the encoder on the right motor
     public static final int MOTOR_ENCODER_A_CHANNEL = 7;
     public static final int MOTOR_ENCODER_B_CHANNEL = 2;
 }
